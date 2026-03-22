@@ -1,0 +1,560 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — Premium Black & Gold
+   ============================================================ */
+:root {
+  /* Gold palette */
+  --gold: #D4A853;
+  --gold-light: #E8C97A;
+  --gold-dark: #B8903A;
+  --gold-deep: #8B6914;
+  --gold-soft: rgba(212, 168, 83, 0.08);
+  --gold-glow: rgba(212, 168, 83, 0.15);
+
+  /* Surfaces — rich blacks */
+  --bg-0: #000000;
+  --bg-1: #050505;
+  --bg-2: #0a0a0a;
+  --bg-3: #111111;
+  --bg-4: #181818;
+  --bg-5: #1f1f1f;
+  --bg-card: rgba(15, 15, 15, 0.7);
+
+  /* Text */
+  --text-primary: #f5f0e8;
+  --text-secondary: #9a9185;
+  --text-muted: #8a8278;
+
+  /* Borders */
+  --border-subtle: rgba(212, 168, 83, 0.06);
+  --border-card: rgba(212, 168, 83, 0.1);
+  --border-hover: rgba(212, 168, 83, 0.3);
+
+  /* Spacing */
+  --section-py: clamp(100px, 12vw, 180px);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--bg-0);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(212, 168, 83, 0.3);
+    color: white;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* ============================================================
+   GOLD GRADIENT TEXT
+   ============================================================ */
+.text-gold {
+  color: var(--gold);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold-shine {
+  background: linear-gradient(
+    135deg,
+    var(--gold-dark) 0%,
+    var(--gold-light) 30%,
+    #fff8e7 50%,
+    var(--gold-light) 70%,
+    var(--gold-dark) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: shine 4s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+/* ============================================================
+   GOLD LINE DIVIDERS
+   ============================================================ */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--gold-deep) 20%,
+    var(--gold) 50%,
+    var(--gold-deep) 80%,
+    transparent 100%
+  );
+  opacity: 0.4;
+}
+
+.gold-line-vertical {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(212, 168, 83, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+/* ============================================================
+   NOISE TEXTURE
+   ============================================================ */
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-0); }
+::-webkit-scrollbar-thumb { background: var(--bg-5); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-deep); }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+/* CTA gold pulse */
+@keyframes gold-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 83, 0.4); }
+  50% { box-shadow: 0 0 0 16px rgba(212, 168, 83, 0); }
+}
+.animate-gold-pulse {
+  animation: gold-pulse 2.5s ease-in-out infinite;
+}
+
+/* Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Slow spin for decorative elements */
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-slow-spin {
+  animation: slow-spin 60s linear infinite;
+}
+
+/* Gold particles */
+@keyframes particle-float-1 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translate(80px, -300px) scale(0.3); opacity: 0; }
+}
+@keyframes particle-float-2 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translate(-60px, -250px) scale(0.2); opacity: 0; }
+}
+@keyframes particle-float-3 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
+  100% { transform: translate(40px, -350px) scale(0.4); opacity: 0; }
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  pointer-events: none;
+}
+.particle-1 { animation: particle-float-1 6s ease-in-out infinite; }
+.particle-2 { animation: particle-float-2 8s ease-in-out infinite 1s; }
+.particle-3 { animation: particle-float-3 7s ease-in-out infinite 2s; }
+.particle-4 { animation: particle-float-1 9s ease-in-out infinite 3s; }
+.particle-5 { animation: particle-float-2 5s ease-in-out infinite 0.5s; }
+.particle-6 { animation: particle-float-3 7.5s ease-in-out infinite 1.5s; }
+
+/* Play button pulse */
+@keyframes play-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 83, 0.4), 0 0 40px rgba(212, 168, 83, 0.15); }
+  50% { box-shadow: 0 0 0 20px rgba(212, 168, 83, 0), 0 0 60px rgba(212, 168, 83, 0.25); }
+}
+
+/* WhatsApp pulse */
+@keyframes whatsapp-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+
+/* ============================================================
+   RADIAL GRADIENT BACKGROUNDS
+   ============================================================ */
+.bg-radial-gold {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    rgba(212, 168, 83, 0.06) 0%,
+    transparent 70%
+  );
+}
+
+.bg-radial-gold-center {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 50%,
+    rgba(212, 168, 83, 0.04) 0%,
+    transparent 70%
+  );
+}
+
+/* ============================================================
+   CARD STYLES
+   ============================================================ */
+.card-premium {
+  background: linear-gradient(
+    160deg,
+    rgba(20, 18, 14, 0.9) 0%,
+    rgba(10, 10, 8, 0.95) 100%
+  );
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.card-premium:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 8px 32px rgba(212, 168, 83, 0.06), 0 0 0 1px rgba(212, 168, 83, 0.1);
+  transform: translateY(-3px);
+}
+
+.card-gold-accent {
+  position: relative;
+  overflow: hidden;
+}
+.card-gold-accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.5;
+}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.timeline-line {
+  position: absolute;
+  left: 19px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(212, 168, 83, 0.3) 0%,
+    rgba(212, 168, 83, 0.08) 100%
+  );
+}
+
+.timeline-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(212, 168, 83, 0.12), rgba(212, 168, 83, 0.04));
+  border: 1px solid rgba(212, 168, 83, 0.25);
+  color: var(--gold);
+  box-shadow: 0 0 20px rgba(212, 168, 83, 0.08);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* ============================================================
+   FORM INPUT STYLE
+   ============================================================ */
+.input-premium {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid rgba(212, 168, 83, 0.12);
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.input-premium::placeholder {
+  color: var(--text-muted);
+}
+.input-premium:focus {
+  border-bottom-color: var(--gold);
+  box-shadow: 0 1px 0 0 var(--gold);
+}
+
+/* ============================================================
+   CTA BUTTON — Metallic Gold Gradient
+   ============================================================ */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  color: #000;
+  box-shadow: 0 4px 24px rgba(212, 168, 83, 0.2), 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+.btn-gold:hover {
+  box-shadow: 0 4px 32px rgba(212, 168, 83, 0.35), 0 20px 50px rgba(0, 0, 0, 0.4);
+  filter: brightness(1.1);
+}
+
+/* Hero CTA — same style as CTA Final */
+.btn-hero-cta {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  color: #000;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 20px 44px;
+  border-radius: 14px;
+  box-shadow: 0 4px 32px rgba(212, 168, 83, 0.25);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-hero-cta:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 40px rgba(212, 168, 83, 0.4);
+}
+.btn-hero-cta:active {
+  transform: scale(0.98);
+}
+
+/* Shimmer sweep on hero CTA */
+.btn-hero-cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  animation: btn-shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes btn-shimmer {
+  0% { left: -100%; }
+  60%, 100% { left: 150%; }
+}
+
+/* ============================================================
+   URGENCY CARD
+   ============================================================ */
+.urgency-card {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(212, 168, 83, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 50% 100%, rgba(212, 168, 83, 0.03) 0%, transparent 60%),
+    linear-gradient(160deg, rgba(22, 18, 10, 0.97) 0%, rgba(8, 7, 4, 0.99) 100%);
+  border: 1px solid rgba(212, 168, 83, 0.18);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 80px rgba(212, 168, 83, 0.04),
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(212, 168, 83, 0.08);
+  backdrop-filter: blur(16px);
+}
+.urgency-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent);
+  opacity: 0.7;
+}
+.urgency-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+  opacity: 0.35;
+}
+
+/* Shimmer sweep */
+@keyframes urgency-shimmer {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(300%) skewX(-15deg); }
+}
+.urgency-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 168, 83, 0.03) 40%,
+    rgba(212, 168, 83, 0.06) 50%,
+    rgba(212, 168, 83, 0.03) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: urgency-shimmer 6s ease-in-out infinite;
+}
+
+/* ============================================================
+   VIDEO PLACEHOLDER
+   ============================================================ */
+.video-placeholder {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-2) 100%);
+  border: 1px solid var(--border-card);
+  cursor: pointer;
+}
+.video-placeholder:hover .play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  animation: play-pulse 2.5s ease-in-out infinite;
+}
+.play-btn svg {
+  width: 28px;
+  height: 28px;
+  fill: #000;
+  margin-left: 4px;
+}
+
+/* ============================================================
+   WHATSAPP FLOATING
+   ============================================================ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 40;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: whatsapp-pulse 2s ease-in-out infinite;
+  transition: transform 0.2s;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-gold-pulse,
+  .animate-float,
+  .animate-slow-spin,
+  .particle {
+    animation: none !important;
+  }
+
+  .text-gradient-gold-shine {
+    animation: none !important;
+    background-size: 100% auto;
+  }
+}
