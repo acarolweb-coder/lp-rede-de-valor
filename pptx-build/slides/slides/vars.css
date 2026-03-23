@@ -1,0 +1,53 @@
+:root {
+  /* Gold palette */
+  --gold: #D4A853;
+  --gold-light: #E8C97A;
+  --gold-dark: #B8903A;
+  --gold-deep: #8B6914;
+
+  /* Surfaces */
+  --bg-0: #000000;
+  --bg-1: #0a0a0a;
+  --bg-2: #111111;
+  --bg-3: #151515;
+  --bg-4: #1a1a1a;
+  --bg-5: #1f1f1f;
+
+  /* Text */
+  --text-primary: #f5f0e8;
+  --text-secondary: #9a9185;
+  --text-muted: #8a8278;
+
+  /* Borders */
+  --border-subtle: rgba(212,168,83,0.12);
+  --border-hover: rgba(212,168,83,0.3);
+
+  /* Typography — Plus Jakarta Sans */
+  --font-family-display: 'Plus Jakarta Sans', Arial, sans-serif;
+  --font-weight-display: 800;
+  --font-family-content: 'Plus Jakarta Sans', Arial, sans-serif;
+  --font-weight-content: 400;
+  --font-size-content: 16px;
+  --line-height-content: 1.5;
+
+  /* Overrides for global.css */
+  --color-surface: #000000;
+  --color-surface-foreground: #f5f0e8;
+  --color-primary: #D4A853;
+  --color-primary-light: #E8C97A;
+  --color-primary-dark: #B8903A;
+  --color-primary-foreground: #000000;
+  --color-secondary: #1a1a1a;
+  --color-secondary-foreground: #f5f0e8;
+  --color-muted: #151515;
+  --color-muted-foreground: #9a9185;
+  --color-accent: #1f1f1f;
+  --color-accent-foreground: #f5f0e8;
+  --color-border: rgba(212,168,83,0.15);
+}
+
+body {
+  background: #000000;
+  color: #f5f0e8;
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+}

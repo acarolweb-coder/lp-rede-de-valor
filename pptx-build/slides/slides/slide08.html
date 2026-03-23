@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+:root {
+  --gold: #D4A853;
+  --gold-light: #E8C97A;
+  --gold-dark: #B8903A;
+  --bg-0: #000000;
+  --text-primary: #f5f0e8;
+  --text-secondary: #9a9185;
+  --text-muted: #8a8278;
+  --font-family-display: 'Plus Jakarta Sans', Arial, sans-serif;
+  --font-family-content: 'Plus Jakarta Sans', Arial, sans-serif;
+  --color-surface: #000000;
+  --color-surface-foreground: #f5f0e8;
+  --color-primary: #D4A853;
+  --color-muted-foreground: #9a9185;
+}
+</style>
+</head>
+<body class="col center" style="background-image: url(../images/footer-bg.jpeg); background-size: cover; background-position: center;">
+  <!-- Heavy dark overlay -->
+  <div style="position: absolute; top: 0; left: 0; width: 960px; height: 540px; background: rgba(0,0,0,0.82);"></div>
+
+  <!-- Radial gold glow -->
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.08) 0%, transparent 65%);"></div>
+
+  <!-- Gold ring outline -->
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 320px; height: 320px; border-radius: 50%; border: 1px solid rgba(212,168,83,0.1);"></div>
+
+  <div class="col center" style="position: relative; z-index: 2; text-align: center;">
+    <!-- Logo centered -->
+    <div style="margin-bottom: 24px;">
+      <img src="../images/logo-rede-de-valor-branco-v2.png" style="width: 220px; height: auto;" />
+    </div>
+
+    <div style="width: 60px; height: 2px; background: var(--gold); border-radius: 1px; margin-bottom: 24px;"></div>
+
+    <h1 style="font-size: 36px; font-weight: 800; color: var(--text-primary); line-height: 1.2; letter-spacing: -0.01em;">
+      Onde <span style="color: var(--gold);">conexões</span> se tornam<br>negócios reais.
+    </h1>
+
+    <p style="font-size: 14px; color: var(--text-secondary); margin-top: 18px; max-width: 400px; line-height: 1.7;">
+      Mais que uma comunidade. Um ecossistema vivo de oportunidades.
+    </p>
+
+    <!-- Powered by -->
+    <div class="row center" style="margin-top: 32px; gap: 10px;">
+      <img src="../images/logo-time-v2.png" style="width: 28px; height: 28px;" />
+      <p style="color: var(--text-muted); font-size: 11px; font-weight: 500;">powered by TIME</p>
+    </div>
+  </div>
+</body>
+</html>

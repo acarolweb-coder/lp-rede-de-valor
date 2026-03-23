@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+:root {
+  --gold: #D4A853;
+  --gold-light: #E8C97A;
+  --gold-dark: #B8903A;
+  --bg-0: #000000;
+  --text-primary: #f5f0e8;
+  --text-secondary: #9a9185;
+  --font-family-display: 'Plus Jakarta Sans', Arial, sans-serif;
+  --font-family-content: 'Plus Jakarta Sans', Arial, sans-serif;
+  --color-surface: #000000;
+  --color-surface-foreground: #f5f0e8;
+  --color-primary: #D4A853;
+  --color-muted-foreground: #9a9185;
+}
+</style>
+</head>
+<body class="row" style="background: #000000;">
+  <!-- Left half: dark with text -->
+  <div class="col" style="width: 500px; padding: 48px 56px; justify-content: center; position: relative; z-index: 2;">
+    <!-- Diagonal gold line accent top-right of text area -->
+    <div style="position: absolute; top: 40px; right: 0; width: 80px; height: 2px; background: linear-gradient(to right, var(--gold), transparent); transform: rotate(-10deg); opacity: 0.4;"></div>
+
+    <p style="font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px;">A Virada</p>
+
+    <h1 style="font-size: 36px; font-weight: 800; line-height: 1.1; color: var(--text-primary); letter-spacing: -0.02em;">
+      E se existisse um lugar<br>onde <span style="color: var(--gold);">cada conexão</span><br>gera resultado?
+    </h1>
+
+    <p style="font-size: 14px; color: var(--text-secondary); margin-top: 18px; line-height: 1.6; max-width: 380px;">
+      Um ecossistema curado, com pessoas que realmente fazem acontecer.
+    </p>
+
+    <div style="margin-top: 24px; width: 50px; height: 3px; background: var(--gold); border-radius: 2px;"></div>
+  </div>
+
+  <!-- Right half: photo with overlay -->
+  <div style="flex: 1; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url(../images/benefits-bg.jpeg); background-size: cover; background-position: center;"></div>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.15) 100%);"></div>
+  </div>
+</body>
+</html>

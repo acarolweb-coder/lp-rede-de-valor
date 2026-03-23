@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+:root {
+  --gold: #D4A853;
+  --gold-light: #E8C97A;
+  --gold-dark: #B8903A;
+  --bg-0: #000000;
+  --bg-2: #111111;
+  --text-primary: #f5f0e8;
+  --text-secondary: #9a9185;
+  --text-muted: #8a8278;
+  --font-family-display: 'Plus Jakarta Sans', Arial, sans-serif;
+  --font-family-content: 'Plus Jakarta Sans', Arial, sans-serif;
+  --color-surface: #000000;
+  --color-surface-foreground: #f5f0e8;
+  --color-primary: #D4A853;
+  --color-muted-foreground: #9a9185;
+}
+</style>
+</head>
+<body class="col" style="background: linear-gradient(145deg, #0a0a0a 0%, #000000 100%);">
+  <!-- Diagonal accent -->
+  <div style="position: absolute; top: 0; right: 0; width: 320px; height: 540px; background: linear-gradient(135deg, transparent 0%, rgba(212,168,83,0.03) 100%);"></div>
+
+  <!-- Left gold bar accent -->
+  <div style="position: absolute; top: 80px; left: 0; width: 4px; height: 120px; background: linear-gradient(to bottom, var(--gold), transparent); border-radius: 0 2px 2px 0;"></div>
+
+  <div class="col" style="position: relative; z-index: 2; padding: 70px 80px; justify-content: center; height: 100%;">
+    <p style="font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px;">O Problema</p>
+
+    <h1 style="font-size: 48px; font-weight: 800; line-height: 1.1; color: var(--text-primary); letter-spacing: -0.02em; max-width: 700px;">
+      O networking tradicional<br><span style="color: var(--gold);">falhou.</span>
+    </h1>
+
+    <p style="font-size: 17px; color: var(--text-secondary); margin-top: 24px; line-height: 1.7; max-width: 520px;">
+      Eventos genéricos, contatos que nunca respondem, grupos que não geram valor. Você já sentiu isso?
+    </p>
+
+    <!-- Stats row -->
+    <div class="row" style="margin-top: 44px; gap: 48px;">
+      <div class="col">
+        <p style="font-size: 40px; font-weight: 800; color: var(--gold); line-height: 1;">87%</p>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px; max-width: 140px;">dos profissionais acham networking ineficiente</p>
+      </div>
+      <div class="col">
+        <p style="font-size: 40px; font-weight: 800; color: var(--gold); line-height: 1;">3h</p>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px; max-width: 140px;">desperdiçadas em eventos sem retorno</p>
+      </div>
+      <div class="col">
+        <p style="font-size: 40px; font-weight: 800; color: var(--gold); line-height: 1;">92%</p>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px; max-width: 140px;">dos cartões trocados nunca viram negócio</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
