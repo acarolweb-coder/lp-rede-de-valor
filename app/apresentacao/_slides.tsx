@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 // ─── CONSTANTS ───
-const TOTAL = 16;
+const TOTAL = 17;
 const FONT = "var(--font-jakarta), 'Plus Jakarta Sans', system-ui, sans-serif";
 
 // ─── TYPE SCALES (presentation-size — big, bold, clear) ───
@@ -301,20 +301,7 @@ function Slide1() {
           onde conexões geram oportunidades reais.
         </motion.p>
 
-        <motion.div variants={fadeUp} className="flex items-center gap-12 mt-5 pt-5" style={{
-          borderTop: "1px solid rgba(212,168,83,0.15)"
-        }}>
-          {[
-            { n: "+100", l: "empresários conectados" },
-            { n: "R$2M+", l: "em negócios gerados" },
-            { n: "48h", l: "para primeira conexão" },
-          ].map((s, i) => (
-            <div key={i} className="flex flex-col">
-              <span style={{ fontSize: 32, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>{s.n}</span>
-              <span style={{ fontSize: TYPE.statLabel, color: "var(--text-muted)", marginTop: 6 }}>{s.l}</span>
-            </div>
-          ))}
-        </motion.div>
+{/* Stats removidos temporariamente */}
       </motion.div>
 
       <motion.div className="absolute bottom-8 right-8 z-10 flex flex-col items-center gap-2"
@@ -603,7 +590,7 @@ function Slide5() {
 // ════════════════════════════════════════════════════════════════
 // SLIDE 6 — PALESTRANTE / EXPERT (text left + image right)
 // ════════════════════════════════════════════════════════════════
-function SlideExpert() {
+export function SlideExpert() {
   return (
     <SlideBase>
       {/* Background gradient */}
@@ -1134,12 +1121,13 @@ function Slide9() {
 // ════════════════════════════════════════════════════════════════
 function Slide10() {
   const benefits = [
-    { icon: "target", t: "Networking Curado", d: "Membros selecionados por critérios rigorosos" },
-    { icon: "brain", t: "Mentoria", d: "Acesso a mentores e especialistas do mercado" },
-    { icon: "star", t: "Eventos Exclusivos", d: "Encontros mensais presenciais premium" },
-    { icon: "book", t: "Conteúdo VIP", d: "Material exclusivo e insights de mercado" },
-    { icon: "link", t: "Matchmaking", d: "Conexões estratégicas direcionadas por AI" },
-    { icon: "briefcase", t: "Acesso Direto", d: "Contato direto com decisores de alto nível" },
+    { icon: "users", t: "Networking de alto nível" },
+    { icon: "compass", t: "Podcast profissional" },
+    { icon: "building", t: "Entrevista em rádio" },
+    { icon: "book", t: "Cursos e treinamentos" },
+    { icon: "calendar", t: "Eventos mensais" },
+    { icon: "briefcase", t: "Projetos com investidores" },
+    { icon: "rocket", t: "Experiências de negócios" },
   ];
 
   return (
@@ -1160,14 +1148,31 @@ function Slide10() {
           <span className="text-gradient-gold-shine">recebe</span>
         </motion.h2>
 
-        <div className="grid grid-cols-3 gap-5" style={{ maxWidth: 1050, margin: "0 auto" }}>
+        <div className="grid grid-cols-4 gap-4" style={{ maxWidth: 1100, margin: "0 auto" }}>
           {benefits.map((b, i) => (
-            <motion.div key={i} variants={fadeUp} className="card-premium p-6 flex flex-col">
-              <div style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(212,168,83,0.08)", border: "1px solid rgba(212,168,83,0.15)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
-                <Icon name={b.icon} size={24} />
+            <motion.div key={i} variants={fadeUp}
+              className="flex items-center gap-4 rounded-2xl p-5"
+              style={{
+                background: "linear-gradient(160deg, rgba(212,168,83,0.06) 0%, rgba(0,0,0,0.3) 100%)",
+                border: "1px solid rgba(212,168,83,0.1)",
+                backdropFilter: "blur(12px)",
+                gridColumn: i >= 4 ? "span 1" : undefined,
+              }}
+              whileHover={{
+                borderColor: "rgba(212,168,83,0.25)",
+                boxShadow: "0 0 30px rgba(212,168,83,0.06)",
+                y: -2,
+              }}
+            >
+              <div style={{
+                width: 42, height: 42, borderRadius: 10, flexShrink: 0,
+                background: "linear-gradient(135deg, rgba(212,168,83,0.12), rgba(212,168,83,0.03))",
+                border: "1px solid rgba(212,168,83,0.15)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <Icon name={b.icon} size={20} />
               </div>
-              <h4 style={{ fontSize: TYPE.cardTitle, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8 }}>{b.t}</h4>
-              <p style={{ fontSize: TYPE.cardBody, color: "var(--text-muted)", lineHeight: 1.6 }}>{b.d}</p>
+              <h4 style={{ fontSize: 17, fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.3 }}>{b.t}</h4>
             </motion.div>
           ))}
         </div>
@@ -1180,14 +1185,10 @@ function Slide10() {
 // SLIDE 11 — IMPACTO (big editorial numbers, centered)
 // ════════════════════════════════════════════════════════════════
 function Slide11({ active }: { active: boolean }) {
-  const c1 = useCounter(100, 1400, active);
-  const c2 = useCounter(2, 800, active);
-  const c3 = useCounter(48, 1200, active);
-
-  const stats = [
-    { v: `+${c1}`, l: "Membros Ativos", icon: "users", desc: "empresários conectados gerando valor mútuo" },
-    { v: `R$${c2}M+`, l: "Em Negócios Gerados", icon: "diamond", desc: "em contratos fechados entre membros" },
-    { v: String(c3), l: "Eventos Realizados", icon: "calendar", desc: "encontros presenciais com resultado" },
+  const cards = [
+    { icon: "users", title: "Empresários selecionados", desc: "Conexões com quem está em movimento" },
+    { icon: "diamond", title: "Oportunidades reais", desc: "Negócios nascem de conexões certas" },
+    { icon: "calendar", title: "Encontros estratégicos", desc: "Ambiente pensado para crescimento" },
   ];
 
   return (
@@ -1222,21 +1223,21 @@ function Slide11({ active }: { active: boolean }) {
       >
         <motion.h2 variants={fadeUp} style={{
           fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
-          color: "var(--text-primary)", marginBottom: 16, letterSpacing: "-0.03em", lineHeight: 1,
+          color: "var(--text-primary)", marginBottom: 16, letterSpacing: "-0.03em", lineHeight: 1.1,
         }}>
-          Quanto vale o acesso às<br />
-          <span className="text-gradient-gold-shine">conexões certas</span>?
+          O valor não está no acesso.<br />
+          Está no{" "}<span className="text-gradient-gold-shine">ambiente.</span>
         </motion.h2>
 
         <motion.p variants={fadeUp} style={{
-          fontSize: TYPE.body, color: "var(--text-muted)", marginBottom: 40, maxWidth: 540, lineHeight: 1.4,
+          fontSize: TYPE.body, color: "var(--text-muted)", marginBottom: 40, maxWidth: 600, lineHeight: 1.6,
         }}>
-          Os números falam por si. Cada membro que entra na Rede de Valor faz um investimento com retorno real.
+          Estamos construindo uma rede com foco em conexões reais, crescimento e geração de oportunidades.
         </motion.p>
 
-        {/* Stat cards — elevated design */}
+        {/* Cards */}
         <div className="grid grid-cols-3 gap-5 w-full" style={{ maxWidth: 1000 }}>
-          {stats.map((s, i) => (
+          {cards.map((c, i) => (
             <motion.div key={i} variants={fadeUp}
               className="relative overflow-hidden rounded-2xl text-center py-10 px-6"
               style={{
@@ -1263,25 +1264,19 @@ function Slide11({ active }: { active: boolean }) {
                 display: "flex", alignItems: "center", justifyContent: "center",
                 boxShadow: "0 0 25px rgba(212,168,83,0.06)",
               }}>
-                <Icon name={s.icon} size={22} />
+                <Icon name={c.icon} size={22} />
               </div>
 
-              {/* Big number */}
+              {/* Title */}
               <p style={{
-                fontSize: "clamp(2.4rem, 4.5vw, 3.5rem)", fontWeight: 700,
-                color: "var(--gold)", lineHeight: 1, letterSpacing: "-0.03em",
-              }}>{s.v}</p>
-
-              {/* Label */}
-              <p style={{
-                fontSize: 14, color: "var(--gold-light)", marginTop: 10, fontWeight: 700,
-                textTransform: "uppercase", letterSpacing: "0.12em",
-              }}>{s.l}</p>
+                fontSize: 22, fontWeight: 700,
+                color: "var(--gold)", lineHeight: 1.2,
+              }}>{c.title}</p>
 
               {/* Description */}
               <p style={{
-                fontSize: 13, color: "var(--text-muted)", marginTop: 8, lineHeight: 1.5,
-              }}>{s.desc}</p>
+                fontSize: 15, color: "var(--text-muted)", marginTop: 10, lineHeight: 1.5,
+              }}>{c.desc}</p>
 
               {/* Bottom accent */}
               <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{
@@ -1296,7 +1291,59 @@ function Slide11({ active }: { active: boolean }) {
 }
 
 // ════════════════════════════════════════════════════════════════
-// SLIDE 12 — PREÇO (urgency card centered + bg photo)
+// SLIDE 12 — ÂNCORA DE PREÇO (valor separado)
+// ════════════════════════════════════════════════════════════════
+function SlideAncora() {
+  return (
+    <SlideBase>
+      <div className="absolute inset-0" style={{
+        background: "radial-gradient(ellipse 50% 50% at 50% 45%, rgba(212,168,83,0.06), transparent)"
+      }} />
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <svg width="500" height="500" viewBox="0 0 500 500" fill="none" style={{ opacity: 0.04 }}>
+          <path d="M250 25L475 250L250 475L25 250Z" stroke="var(--gold)" strokeWidth="1.5" />
+        </svg>
+      </div>
+      <CornerAccent position="tl" />
+      <CornerAccent position="br" />
+
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-[6%]"
+        variants={stagger} initial="hidden" animate="show"
+      >
+        <motion.h2 variants={fadeUp} style={{
+          fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
+          color: "var(--text-primary)", lineHeight: 1.15, letterSpacing: "-0.02em",
+          maxWidth: 800,
+        }}>
+          Se você fosse pagar por<br />tudo isso{" "}
+          <span className="text-gradient-gold-shine">separadamente…</span>
+        </motion.h2>
+
+        <motion.div variants={scaleIn} className="mt-10 mb-6">
+          <p style={{
+            fontSize: "clamp(4rem, 8vw, 6.5rem)", fontWeight: 700,
+            lineHeight: 1, letterSpacing: "-0.03em",
+            background: "linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%)",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+            filter: "drop-shadow(0 0 40px rgba(212,168,83,0.2))",
+          }}>R$ 15.500</p>
+        </motion.div>
+
+        <motion.div variants={fadeUp} style={{ width: 60, height: 2, background: "var(--gold)", borderRadius: 1, opacity: 0.3, marginBottom: 20 }} />
+
+        <motion.p variants={fadeUp} style={{
+          fontSize: TYPE.bodyLg, color: "var(--text-muted)",
+          lineHeight: 1.7, fontStyle: "italic",
+        }}>
+          (E isso sem contar o valor das conexões)
+        </motion.p>
+      </motion.div>
+    </SlideBase>
+  );
+}
+
+// ════════════════════════════════════════════════════════════════
+// SLIDE 13 — PREÇO (urgency card centered + bg photo)
 // ════════════════════════════════════════════════════════════════
 function Slide12() {
   return (
@@ -1316,22 +1363,52 @@ function Slide12() {
         </svg>
       </div>
 
-      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full"
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-[6%]"
         variants={stagger} initial="hidden" animate="show"
       >
-        <motion.div variants={scaleIn} className="urgency-card px-14 py-16 text-center" style={{ maxWidth: 620 }}>
+        <motion.h2 variants={fadeUp} style={{
+          fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
+          color: "var(--text-primary)", lineHeight: 1.15, letterSpacing: "-0.02em",
+          marginBottom: 8,
+        }}>
+          Mas você não vai pagar isso.
+        </motion.h2>
+
+        <motion.p variants={fadeUp} style={{
+          fontSize: TYPE.bodyLg, color: "var(--text-muted)", marginBottom: 32,
+        }}>
+          Hoje…
+        </motion.p>
+
+        <motion.p variants={fadeUp} style={{
+          fontSize: TYPE.body, color: "var(--text-secondary)", marginBottom: 16,
+        }}>
+          Você pode fazer parte por:
+        </motion.p>
+
+        <motion.div variants={scaleIn} className="urgency-card px-14 py-12 text-center" style={{ maxWidth: 580 }}>
           <div className="urgency-shimmer" />
-          <p style={{ fontSize: 16, color: "var(--text-muted)", marginBottom: 6 }}>Valor normal</p>
-          <p style={{ fontSize: 24, color: "var(--text-muted)", marginBottom: 20, textDecoration: "line-through" }}>R$ 4.997</p>
-          <p style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: "0.2em", color: "var(--gold)", fontWeight: 700, marginBottom: 10 }}>Investimento Fundador</p>
           <p style={{ fontSize: "clamp(3.5rem, 7vw, 5rem)", fontWeight: 700, lineHeight: 1, letterSpacing: "-0.03em" }}>
-            <span className="text-gradient-gold-shine">R$ 1.997</span>
+            <span className="text-gradient-gold-shine">R$ 5.000</span>
           </p>
-          <p style={{ fontSize: 18, color: "var(--text-secondary)", marginTop: 10 }}>por ano · acesso completo</p>
-          <div style={{ width: 60, height: 1, background: "rgba(212,168,83,0.3)", margin: "24px auto" }} />
-          <p style={{ fontSize: 16, color: "var(--text-muted)", lineHeight: 1.7, maxWidth: 400, margin: "0 auto" }}>
-            Todos os eventos · Matchmaking VIP · Mentoria · Grupo exclusivo
-          </p>
+
+          <div className="flex items-center justify-center gap-6 mt-6">
+            <div style={{ width: 40, height: 1, background: "rgba(212,168,83,0.2)" }} />
+            <span style={{ fontSize: 14, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 600 }}>ou</span>
+            <div style={{ width: 40, height: 1, background: "rgba(212,168,83,0.2)" }} />
+          </div>
+
+          <div className="flex items-center justify-center gap-8 mt-5">
+            <div className="flex flex-col items-center">
+              <p style={{ fontSize: 28, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>12x</p>
+              <p style={{ fontSize: 14, color: "var(--text-muted)", marginTop: 4 }}>de <span style={{ color: "var(--text-secondary)", fontWeight: 600 }}>R$ 482</span></p>
+            </div>
+            <div style={{ width: 1, height: 40, background: "rgba(212,168,83,0.15)" }} />
+            <div className="flex flex-col items-center">
+              <p style={{ fontSize: 28, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>18x</p>
+              <p style={{ fontSize: 14, color: "var(--text-muted)", marginTop: 4 }}>de <span style={{ color: "var(--text-secondary)", fontWeight: 600 }}>R$ 342</span></p>
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </SlideBase>
@@ -1342,124 +1419,54 @@ function Slide12() {
 // SLIDE 13 — URGÊNCIA (centered layout, counter as hero)
 // ════════════════════════════════════════════════════════════════
 function Slide13() {
-  const filled = 27;
-  const total = 50;
-  const remaining = total - filled;
-
   return (
     <SlideBase>
       <div className="absolute inset-0">
         <Image src="/images/cta-bg.jpeg" alt="" fill className="object-cover" />
         <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.9)" }} />
       </div>
-      {/* Radial glow centered on counter hero */}
       <div className="absolute inset-0" style={{
-        background: "radial-gradient(ellipse 60% 50% at 50% 42%, rgba(212,168,83,0.07), transparent)"
+        background: "radial-gradient(ellipse 50% 50% at 50% 45%, rgba(212,168,83,0.06), transparent)"
       }} />
       <CornerAccent position="tl" />
       <CornerAccent position="br" />
 
-      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[6%] text-center" style={{ marginTop: "-3%" }}
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[6%] text-center"
         variants={stagger} initial="hidden" animate="show"
       >
-        {/* Title */}
         <motion.h2 variants={fadeUp} style={{
-          fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
-          color: "var(--text-primary)", lineHeight: 1.15, marginBottom: 12, letterSpacing: "-0.02em",
+          fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
+          color: "var(--text-primary)", lineHeight: 1.15, letterSpacing: "-0.02em",
+          marginBottom: 24,
         }}>
-          Essa condição tem <span className="text-gradient-gold-shine">prazo.</span>
+          Mas sendo justo com<br />quem está aqui{" "}
+          <span className="text-gradient-gold-shine">hoje…</span>
         </motion.h2>
 
+        <motion.div variants={fadeUp} style={{ width: 60, height: 2, background: "var(--gold)", borderRadius: 1, opacity: 0.3, marginBottom: 28 }} />
+
         <motion.p variants={fadeUp} style={{
-          fontSize: TYPE.body, color: "var(--text-secondary)", lineHeight: 1.6, maxWidth: 500, marginBottom: 36,
+          fontSize: TYPE.bodyLg, color: "var(--text-secondary)",
+          lineHeight: 1.7, maxWidth: 500, marginBottom: 12,
         }}>
-          As vagas de fundador são limitadas. Quem entra agora garante a melhor condição, para sempre.
+          Essa condição é{" "}
+          <span style={{ color: "var(--gold)", fontWeight: 700 }}>exclusiva.</span>
         </motion.p>
 
-        {/* Hero counter card — centered */}
-        <motion.div variants={scaleIn} className="relative mb-0">
-          {/* Pulsing glow behind card */}
-          <motion.div className="absolute rounded-3xl" style={{
-            inset: -30, background: "radial-gradient(circle, rgba(212,168,83,0.12), transparent 70%)",
-          }} animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
+        <motion.p variants={fadeUp} style={{
+          fontSize: TYPE.bodyLg, color: "var(--text-muted)",
+          lineHeight: 1.7, maxWidth: 500, marginBottom: 8,
+        }}>
+          Depois desse evento…
+        </motion.p>
 
-          <div className="relative text-center rounded-2xl overflow-hidden" style={{
-            background: "linear-gradient(160deg, rgba(212,168,83,0.1) 0%, rgba(0,0,0,0.5) 100%)",
-            border: "1px solid rgba(212,168,83,0.25)",
-            padding: "40px 64px",
-            minWidth: 320,
-            boxShadow: "0 0 80px rgba(212,168,83,0.08), inset 0 1px 0 rgba(212,168,83,0.1)",
-          }}>
-            {/* Top shimmer line */}
-            <div className="absolute top-0 left-0 right-0 h-[1px]" style={{
-              background: "linear-gradient(to right, transparent, rgba(212,168,83,0.4), transparent)",
-            }} />
-
-            <p style={{
-              fontSize: 13, color: "var(--gold)", textTransform: "uppercase",
-              letterSpacing: "0.25em", fontWeight: 700, marginBottom: 8,
-            }}>Restam apenas</p>
-
-            {/* Big number */}
-            <p style={{
-              fontSize: "clamp(5rem, 10vw, 7.5rem)", fontWeight: 700,
-              lineHeight: 1, letterSpacing: "-0.04em",
-              background: "linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-              filter: "drop-shadow(0 0 30px rgba(212,168,83,0.25))",
-            }}>{remaining}</p>
-
-            <p style={{
-              fontSize: 18, color: "var(--text-secondary)", marginTop: 8, fontWeight: 500,
-            }}>vagas de fundador</p>
-
-            {/* Scarcity progress bar */}
-            <div className="mt-7 mx-auto" style={{ maxWidth: 240 }}>
-              <div className="flex justify-between mb-2">
-                <span style={{ fontSize: 11, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Preenchidas</span>
-                <span style={{ fontSize: 11, color: "var(--gold)", fontWeight: 700 }}>{filled}/{total}</span>
-              </div>
-              <div className="relative rounded-full overflow-hidden" style={{
-                height: 6, background: "rgba(255,255,255,0.06)",
-              }}>
-                <motion.div className="absolute top-0 left-0 h-full rounded-full" style={{
-                  background: "linear-gradient(to right, var(--gold-dark), var(--gold), var(--gold-light))",
-                  boxShadow: "0 0 12px rgba(212,168,83,0.4)",
-                }}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${(filled / total) * 100}%` }}
-                  transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
-                />
-              </div>
-            </div>
-
-            {/* Bottom accent */}
-            <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{
-              background: "linear-gradient(to right, transparent, rgba(212,168,83,0.3), transparent)",
-            }} />
-          </div>
-        </motion.div>
-
-        {/* Bullets — horizontal row below counter */}
-        <motion.div variants={fadeUp} className="flex items-center justify-center gap-8 flex-wrap">
-          {[
-            { icon: "shield", text: "Apenas 50 vagas" },
-            { icon: "star", text: "Condição única" },
-            { icon: "diamond", text: "Preço vitalício" },
-          ].map((item, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div style={{
-                width: 36, height: 36, borderRadius: 10, flexShrink: 0,
-                background: "linear-gradient(135deg, rgba(212,168,83,0.12), rgba(212,168,83,0.03))",
-                border: "1px solid rgba(212,168,83,0.15)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}>
-                <Icon name={item.icon} size={16} />
-              </div>
-              <span style={{ fontSize: 15, color: "var(--text-primary)", fontWeight: 600 }}>{item.text}</span>
-            </div>
-          ))}
-        </motion.div>
+        <motion.p variants={fadeUp} style={{
+          fontSize: TYPE.center, fontWeight: 700,
+          color: "var(--text-primary)", letterSpacing: "-0.02em",
+        }}>
+          isso{" "}
+          <span style={{ color: "var(--gold)", fontWeight: 700 }}>muda.</span>
+        </motion.p>
       </motion.div>
     </SlideBase>
   );
@@ -1633,7 +1640,50 @@ function Slide14() {
 }
 
 // ════════════════════════════════════════════════════════════════
-// SLIDE 15 — CTA FINAL (photo + diamond + button)
+// SLIDE — PERGUNTA FINAL (breathing slide antes do CTA)
+// ════════════════════════════════════════════════════════════════
+function SlidePergunta() {
+  return (
+    <SlideBase>
+      <div className="absolute inset-0" style={{
+        background: "radial-gradient(ellipse 50% 50% at 50% 45%, rgba(212,168,83,0.05), transparent)"
+      }} />
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <svg width="500" height="500" viewBox="0 0 500 500" fill="none" style={{ opacity: 0.03 }}>
+          <path d="M250 25L475 250L250 475L25 250Z" stroke="var(--gold)" strokeWidth="1.5" />
+          <path d="M250 75L425 250L250 425L75 250Z" stroke="var(--gold)" strokeWidth="0.8" />
+        </svg>
+      </div>
+      <CornerAccent position="tl" />
+      <CornerAccent position="br" />
+
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-[8%]"
+        variants={stagger} initial="hidden" animate="show"
+      >
+        <motion.p variants={fadeUp} style={{
+          fontSize: TYPE.bodyLg, color: "var(--text-muted)",
+          marginBottom: 20,
+        }}>
+          A pergunta não é o valor.
+        </motion.p>
+
+        <motion.h2 variants={fadeUp} style={{
+          fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
+          color: "var(--text-primary)", lineHeight: 1.15, letterSpacing: "-0.02em",
+          maxWidth: 800,
+        }}>
+          É: Você quer continuar{" "}
+          <span style={{ color: "var(--text-muted)", fontWeight: 700 }}>sozinho…</span><br />
+          ou crescer com as{" "}
+          <span className="text-gradient-gold-shine">pessoas certas?</span>
+        </motion.h2>
+      </motion.div>
+    </SlideBase>
+  );
+}
+
+// ════════════════════════════════════════════════════════════════
+// SLIDE — CTA FINAL (photo + diamond + button)
 // ════════════════════════════════════════════════════════════════
 function Slide15() {
   return (
@@ -1682,32 +1732,33 @@ function Slide15() {
         <motion.div variants={fadeUp} style={{ width: 60, height: 2, background: "var(--gold)", borderRadius: 1, marginBottom: 10, opacity: 0.4 }} />
 
         <motion.h2 variants={fadeUp} style={{
-          fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
-          color: "var(--text-primary)", lineHeight: 1.1, maxWidth: 700, letterSpacing: "-0.02em",
+          fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
+          color: "var(--text-primary)", lineHeight: 1.15, letterSpacing: "-0.02em",
+          marginBottom: 32,
         }}>
-          O próximo nível<br />
-          do seu negócio<br />
-          começa com a<br />
-          <span className="text-gradient-gold-shine">conexão certa.</span>
+          Agora é o{" "}
+          <span className="text-gradient-gold-shine">momento.</span>
         </motion.h2>
 
-        <motion.p variants={fadeUp} style={{
-          fontSize: TYPE.bodyLg, color: "var(--text-secondary)",
-          marginTop: 20, maxWidth: 480, lineHeight: 1.7,
-        }}>
-          Garanta sua vaga de fundador.<br />Fale com nosso time.
-        </motion.p>
-
-        {/* Social proof bar */}
-        <motion.div variants={fadeUp} className="mt-10 flex items-center gap-8">
+        <motion.div variants={fadeUp} className="flex flex-col gap-5">
           {[
-            { n: "+100", l: "membros" },
-            { n: "R$2M+", l: "gerados" },
-            { n: "48", l: "eventos" },
-          ].map((s, i) => (
-            <div key={i} className="flex items-center gap-2">
-              <span style={{ fontSize: 18, fontWeight: 700, color: "var(--gold)" }}>{s.n}</span>
-              <span style={{ fontSize: 12, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.l}</span>
+            "Faça seu cadastro",
+            "Fale com o time",
+            "Garanta sua vaga",
+          ].map((text, i) => (
+            <div key={i} className="flex items-center gap-4">
+              <div style={{
+                width: 40, height: 40, borderRadius: 10,
+                background: "linear-gradient(135deg, rgba(212,168,83,0.15), rgba(212,168,83,0.05))",
+                border: "1px solid rgba(212,168,83,0.2)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                boxShadow: "0 0 20px rgba(212,168,83,0.06)",
+              }}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8L7 12L13 4" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <span style={{ fontSize: 22, color: "var(--text-primary)", fontWeight: 600 }}>{text}</span>
             </div>
           ))}
         </motion.div>
@@ -1726,17 +1777,18 @@ const SLIDES: Record<number, React.FC<{ active: boolean }>> = {
   2: () => <Slide3 />,
   3: () => <Slide4 />,
   4: () => <Slide5 />,
-  5: () => <SlideExpert />,
-  6: () => <Slide6 />,
-  7: () => <Slide7 />,
-  8: () => <Slide8 />,
-  9: () => <Slide9 />,
-  10: () => <Slide10 />,
-  11: ({ active }) => <Slide11 active={active} />,
+  5: () => <Slide6 />,
+  6: () => <Slide7 />,
+  7: () => <Slide8 />,
+  8: () => <Slide9 />,
+  9: () => <Slide10 />,
+  10: ({ active }) => <Slide11 active={active} />,
+  11: () => <SlideAncora />,
   12: () => <Slide12 />,
   13: () => <Slide13 />,
   14: () => <Slide14 />,
-  15: () => <Slide15 />,
+  15: () => <SlidePergunta />,
+  16: () => <Slide15 />,
 };
 
 // ════════════════════════════════════════════════════════════════
