@@ -758,21 +758,7 @@ function Slide6() {
           ))}
         </div>
 
-        {/* Bottom stats bar */}
-        <motion.div variants={fadeUp} className="flex items-center justify-center gap-16 mt-10 pt-8" style={{
-          borderTop: "1px solid rgba(212,168,83,0.08)", maxWidth: 1300, width: "100%",
-        }}>
-          {[
-            { n: "+100", l: "membros ativos" },
-            { n: "12", l: "eventos/ano" },
-            { n: "R$2M+", l: "em negócios gerados" },
-          ].map((s, i) => (
-            <div key={i} className="flex items-center gap-4">
-              <span style={{ fontSize: 34, fontWeight: 700, color: "var(--gold)" }}>{s.n}</span>
-              <span style={{ fontSize: 15, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 500 }}>{s.l}</span>
-            </div>
-          ))}
-        </motion.div>
+{/* Stats removidos */}
       </motion.div>
     </SlideBase>
   );
