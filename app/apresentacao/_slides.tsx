@@ -272,31 +272,24 @@ function Slide1() {
       <CornerAccent position="tl" />
       <CornerAccent position="br" />
 
-      <motion.div className="relative z-10 flex flex-col justify-center h-full px-[8%] max-w-[65%]"
+      <motion.div className="relative z-10 flex flex-col justify-center h-full px-[8%] max-w-[65%] pt-10 pb-24"
         variants={stagger} initial="hidden" animate="show"
       >
-        {/* LOGOS — informação principal */}
-        <motion.div variants={scaleReveal} className="flex items-center gap-6 mb-10" style={{
+        {/* LOGOS */}
+        <motion.div variants={scaleReveal} className="flex items-center gap-6 mb-6" style={{
           filter: "drop-shadow(0 0 30px rgba(212,168,83,0.15))"
         }}>
-          <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={280} height={90} className="h-[72px] w-auto" />
+          <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={280} height={90} className="h-[66px] w-auto" />
           <span style={{ fontSize: 28, fontWeight: 200, color: "rgba(212,168,83,0.5)" }}>+</span>
-          <Image src="/images/logo-time-v2.png" alt="TIME" width={200} height={65} className="h-[56px] w-auto" />
-        </motion.div>
-
-        <motion.div variants={fadeUp}
-          className="self-start px-6 py-2.5 rounded-full mb-8 tracking-[0.25em] uppercase"
-          style={{ border: "1px solid rgba(212,168,83,0.3)", color: "var(--gold)", background: "rgba(212,168,83,0.08)", fontWeight: 600, fontSize: 13 }}
-        >
-          Apresentação Comercial 2025
+          <Image src="/images/logo-time-v2.png" alt="TIME" width={200} height={65} className="h-[50px] w-auto" />
         </motion.div>
 
         <motion.h1 variants={fadeUp} style={{
-          fontFamily: FONT, fontSize: TYPE.hero, fontWeight: 700,
-          lineHeight: 1.05, color: "var(--text-primary)", letterSpacing: "-0.03em",
+          fontFamily: FONT, fontSize: "clamp(2.4rem, 4.5vw, 3.8rem)", fontWeight: 700,
+          lineHeight: 1.1, color: "var(--text-primary)", letterSpacing: "-0.03em",
         }}>
-          Um novo nível de<br />networking para quem quer{" "}
-          <span className="text-gradient-gold-shine">crescer de verdade.</span>
+          Um novo nível de<br />networking para<br />quem quer{" "}
+          <span className="text-gradient-gold-shine">crescer<br />de verdade.</span>
         </motion.h1>
 
         <motion.p variants={fadeUp} style={{
@@ -308,7 +301,7 @@ function Slide1() {
           onde conexões geram oportunidades reais.
         </motion.p>
 
-        <motion.div variants={fadeUp} className="flex items-center gap-12 mt-10 pt-8" style={{
+        <motion.div variants={fadeUp} className="flex items-center gap-12 mt-5 pt-5" style={{
           borderTop: "1px solid rgba(212,168,83,0.15)"
         }}>
           {[
@@ -406,12 +399,10 @@ function Slide3() {
         background: "radial-gradient(ellipse at 25% 50%, rgba(212,168,83,0.03), transparent 60%)"
       }} />
 
-      <div className="flex items-center h-full">
-        <motion.div className="w-[55%] flex flex-col justify-center px-[6%] relative z-10"
+      <div className="flex items-center h-full" style={{ marginTop: "-3%" }}>
+        <motion.div className="w-[55%] flex flex-col justify-center pl-[8%] pr-[6%] relative z-10"
           variants={stagger} initial="hidden" animate="show"
         >
-          <Label>O Problema</Label>
-
           <motion.h2 variants={fadeUp} style={{
             fontFamily: FONT, fontSize: TYPE.hero, fontWeight: 700,
             color: "var(--text-primary)", lineHeight: 1.05, letterSpacing: "-0.03em",
@@ -422,12 +413,12 @@ function Slide3() {
 
           <motion.p variants={fadeUp} style={{
             fontSize: TYPE.body, color: "var(--text-secondary)",
-            marginTop: 24, maxWidth: 460, lineHeight: 1.7,
+            marginTop: 16, maxWidth: 460, lineHeight: 1.7,
           }}>
             Eventos genéricos, contatos que nunca respondem, grupos que não geram valor.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-10 grid grid-cols-3 gap-0">
+          <motion.div variants={fadeUp} className="mt-5 grid grid-cols-3 gap-0">
             {[
               { n: "87%", l: "acham networking ineficiente" },
               { n: "3h", l: "desperdiçadas em eventos sem retorno" },
@@ -486,17 +477,16 @@ function Slide4() {
       >
         {/* Left — title area */}
         <div className="w-[38%] flex flex-col justify-center">
-          <Label>As Dores</Label>
           <motion.h2 variants={fadeUp} style={{
             fontFamily: FONT, fontSize: TYPE.hero, fontWeight: 700,
             color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.05,
           }}>
             O problema<br />não é você,{" "}
-            <span className="text-gradient-gold-shine">é o<br />ambiente.</span>
+            <span className="text-gradient-gold-shine">é<br />o ambiente.</span>
           </motion.h2>
           <motion.div variants={fadeUp} style={{ width: 60, height: 3, background: "var(--gold)", borderRadius: 2, marginTop: 28, opacity: 0.5 }} />
           <motion.p variants={fadeUp} style={{
-            fontSize: TYPE.body, color: "var(--text-secondary)", lineHeight: 1.7, marginTop: 20, maxWidth: 360,
+            fontSize: TYPE.body, color: "var(--text-secondary)", lineHeight: 1.4, marginTop: 20, maxWidth: 360,
           }}>
             Enquanto você tenta crescer sozinho, as oportunidades certas estão passando.
           </motion.p>
@@ -567,11 +557,9 @@ function Slide5() {
       <CornerAccent position="tl" />
       <CornerAccent position="br" />
 
-      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-[8%]"
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-[8%]" style={{ marginTop: "-3%" }}
         variants={stagger} initial="hidden" animate="show"
       >
-        <Label>A Virada</Label>
-
         <motion.h2 variants={fadeUp} style={{
           fontFamily: FONT, fontSize: TYPE.hero, fontWeight: 700,
           color: "var(--text-primary)", lineHeight: 1.08, letterSpacing: "-0.03em",
@@ -635,12 +623,11 @@ function Slide6() {
       <CornerAccent position="tl" />
       <CornerAccent position="br" />
 
-      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[6%]"
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[6%]" style={{ marginTop: "-3%" }}
         variants={stagger} initial="hidden" animate="show"
       >
         {/* Top section — title + description centered */}
         <div className="text-center mb-8">
-          <Label>A Solução</Label>
           <motion.h2 variants={fadeUp} style={{
             fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
             color: "var(--text-primary)", lineHeight: 1.05, letterSpacing: "-0.03em",
@@ -735,12 +722,11 @@ function Slide7() {
       <CornerAccent position="tl" />
       <CornerAccent position="br" />
 
-      <motion.div className="relative z-10 flex flex-col justify-center h-full px-[6%]"
+      <motion.div className="relative z-10 flex flex-col justify-center h-full px-[6%]" style={{ marginTop: "-4%" }}
         variants={stagger} initial="hidden" animate="show"
       >
         {/* Header centered */}
-        <div className="text-center mb-12">
-          <Label>Nossa Proposta</Label>
+        <div className="text-center mb-10">
           <motion.h2 variants={fadeUp} style={{
             fontFamily: FONT, fontSize: TYPE.hero, fontWeight: 700,
             color: "var(--text-primary)", letterSpacing: "-0.03em",
@@ -751,7 +737,7 @@ function Slide7() {
         </div>
 
         {/* Two cards with + connector */}
-        <div className="flex items-stretch justify-center gap-8" style={{ maxWidth: 1100, margin: "0 auto", width: "100%" }}>
+        <div className="flex items-stretch justify-center gap-5" style={{ maxWidth: 1100, margin: "0 auto", width: "100%" }}>
           {/* Card Rede de Valor */}
           <motion.div variants={slideL} className="flex-1 relative overflow-hidden rounded-2xl"
             style={{
@@ -765,7 +751,7 @@ function Slide7() {
             }}>RV</span>
 
             <div className="mb-8">
-              <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={180} height={60} className="h-12 w-auto opacity-90" />
+              <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={220} height={72} className="h-14 w-auto opacity-90" />
             </div>
 
             <ul className="space-y-5">
@@ -1025,19 +1011,18 @@ function Slide10() {
         <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.88)" }} />
       </div>
 
-      <motion.div className="relative z-10 flex flex-col justify-center h-full px-[6%]"
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[6%]" style={{ marginTop: "-3%" }}
         variants={stagger} initial="hidden" animate="show"
       >
-        <Label>Benefícios</Label>
         <motion.h2 variants={fadeUp} style={{
           fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
-          color: "var(--text-primary)", marginBottom: 36, letterSpacing: "-0.02em",
+          color: "var(--text-primary)", marginBottom: 36, letterSpacing: "-0.02em", textAlign: "center",
         }}>
           O que você{" "}
           <span className="text-gradient-gold-shine">recebe</span>
         </motion.h2>
 
-        <div className="grid grid-cols-3 gap-5" style={{ maxWidth: 1050 }}>
+        <div className="grid grid-cols-3 gap-5" style={{ maxWidth: 1050, margin: "0 auto" }}>
           {benefits.map((b, i) => (
             <motion.div key={i} variants={fadeUp} className="card-premium p-6">
               <div style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(212,168,83,0.08)", border: "1px solid rgba(212,168,83,0.15)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
@@ -1097,20 +1082,18 @@ function Slide11({ active }: { active: boolean }) {
       <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-[6%]"
         variants={stagger} initial="hidden" animate="show"
       >
-        <Label>O Impacto</Label>
         <motion.h2 variants={fadeUp} style={{
-          fontFamily: FONT, fontSize: TYPE.hero, fontWeight: 700,
-          color: "var(--text-primary)", marginBottom: 16, letterSpacing: "-0.03em",
+          fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
+          color: "var(--text-primary)", marginBottom: 16, letterSpacing: "-0.03em", lineHeight: 1,
         }}>
-          Quanto vale o acesso às{" "}
+          Quanto vale o acesso às<br />
           <span className="text-gradient-gold-shine">conexões certas</span>?
         </motion.h2>
 
         <motion.p variants={fadeUp} style={{
-          fontSize: TYPE.body, color: "var(--text-muted)", marginBottom: 48, maxWidth: 480, lineHeight: 1.7,
+          fontSize: TYPE.body, color: "var(--text-muted)", marginBottom: 40, maxWidth: 540, lineHeight: 1.4,
         }}>
-          Os números falam por si. Cada membro que entra na Rede de Valor
-          faz um investimento com retorno real.
+          Os números falam por si. Cada membro que entra na Rede de Valor faz um investimento com retorno real.
         </motion.p>
 
         {/* Stat cards — elevated design */}
@@ -1238,32 +1221,25 @@ function Slide13() {
       <CornerAccent position="tl" />
       <CornerAccent position="br" />
 
-      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[6%] text-center"
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[6%] text-center" style={{ marginTop: "-3%" }}
         variants={stagger} initial="hidden" animate="show"
       >
-        {/* Label */}
-        <motion.div variants={fadeUp}>
-          <Label>Urgência</Label>
-        </motion.div>
-
-        {/* Title — max 3 lines */}
+        {/* Title */}
         <motion.h2 variants={fadeUp} style={{
           fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
           color: "var(--text-primary)", lineHeight: 1.15, marginBottom: 12, letterSpacing: "-0.02em",
-          maxWidth: 600,
         }}>
-          Essa condição tem{" "}
-          <span className="text-gradient-gold-shine">prazo.</span>
+          Essa condição tem <span className="text-gradient-gold-shine">prazo.</span>
         </motion.h2>
 
         <motion.p variants={fadeUp} style={{
           fontSize: TYPE.body, color: "var(--text-secondary)", lineHeight: 1.6, maxWidth: 500, marginBottom: 36,
         }}>
-          As vagas de fundador são limitadas. Quem entra agora garante a melhor condição — para sempre.
+          As vagas de fundador são limitadas. Quem entra agora garante a melhor condição, para sempre.
         </motion.p>
 
         {/* Hero counter card — centered */}
-        <motion.div variants={scaleIn} className="relative mb-10">
+        <motion.div variants={scaleIn} className="relative mb-0">
           {/* Pulsing glow behind card */}
           <motion.div className="absolute rounded-3xl" style={{
             inset: -30, background: "radial-gradient(circle, rgba(212,168,83,0.12), transparent 70%)",
@@ -1389,11 +1365,10 @@ function Slide14() {
       <CornerAccent position="tl" />
       <CornerAccent position="br" />
 
-      <motion.div className="relative z-10 flex flex-col justify-center h-full px-[6%]"
+      <motion.div className="relative z-10 flex flex-col justify-center h-full px-[6%]" style={{ marginTop: "-3%" }}
         variants={stagger} initial="hidden" animate="show"
       >
         <div className="text-center mb-10">
-          <Label>Sua Decisão</Label>
           <motion.h2 variants={fadeUp} style={{
             fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
             color: "var(--text-primary)", letterSpacing: "-0.02em",
@@ -1403,7 +1378,7 @@ function Slide14() {
           </motion.h2>
         </div>
 
-        <div className="flex items-stretch justify-center gap-0 mx-auto" style={{ maxWidth: 1050 }}>
+        <div className="flex items-stretch justify-center gap-0 mx-auto" style={{ maxWidth: 950 }}>
           {/* "Sem" card — deliberately muted/depressed */}
           <motion.div variants={slideL} className="flex-1 p-8 rounded-l-2xl relative overflow-hidden" style={{
             background: "linear-gradient(145deg, rgba(15,15,15,0.95), rgba(20,20,20,0.9))",
@@ -1551,27 +1526,28 @@ function Slide15() {
       <CornerAccent position="bl" />
       <CornerAccent position="br" />
 
-      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-[6%]"
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-[6%]" style={{ marginTop: "-3%" }}
         variants={stagger} initial="hidden" animate="show"
       >
         {/* Logo with glow */}
-        <motion.div variants={scaleReveal} className="mb-6 relative">
+        <motion.div variants={scaleReveal} className="mb-2 relative">
           <div className="absolute inset-0" style={{
             filter: "blur(40px)", background: "rgba(212,168,83,0.12)",
             transform: "scale(2)", borderRadius: "50%",
           }} />
-          <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={280} height={90} className="relative" />
+          <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={240} height={78} className="relative h-[70px] w-auto" />
         </motion.div>
 
         {/* Separator */}
-        <motion.div variants={fadeUp} style={{ width: 60, height: 2, background: "var(--gold)", borderRadius: 1, marginBottom: 24, opacity: 0.4 }} />
+        <motion.div variants={fadeUp} style={{ width: 60, height: 2, background: "var(--gold)", borderRadius: 1, marginBottom: 10, opacity: 0.4 }} />
 
         <motion.h2 variants={fadeUp} style={{
           fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
           color: "var(--text-primary)", lineHeight: 1.1, maxWidth: 700, letterSpacing: "-0.02em",
         }}>
-          O próximo nível do seu negócio<br />
-          começa com a{" "}
+          O próximo nível<br />
+          do seu negócio<br />
+          começa com a<br />
           <span className="text-gradient-gold-shine">conexão certa.</span>
         </motion.h2>
 
@@ -1579,26 +1555,8 @@ function Slide15() {
           fontSize: TYPE.bodyLg, color: "var(--text-secondary)",
           marginTop: 20, maxWidth: 480, lineHeight: 1.7,
         }}>
-          Garanta sua vaga de fundador. Fale com nosso time.
+          Garanta sua vaga de fundador.<br />Fale com nosso time.
         </motion.p>
-
-        {/* CTA button with WhatsApp icon */}
-        <motion.div variants={fadeUp} className="mt-10">
-          <motion.a
-            href="https://wa.me/5500000000000?text=Quero%20saber%20mais%20sobre%20a%20Rede%20de%20Valor"
-            target="_blank" rel="noopener noreferrer"
-            className="btn-hero-cta inline-flex items-center gap-3"
-            style={{ fontFamily: FONT, fontSize: 18, padding: "20px 52px" }}
-            whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(212,168,83,0.25)" }}
-            whileTap={{ scale: 0.98 }}
-          >
-            {/* WhatsApp icon */}
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            QUERO FAZER PARTE
-          </motion.a>
-        </motion.div>
 
         {/* Social proof bar */}
         <motion.div variants={fadeUp} className="mt-10 flex items-center gap-8">
@@ -1614,11 +1572,6 @@ function Slide15() {
           ))}
         </motion.div>
 
-        {/* Powered by */}
-        <motion.div variants={fadeIn} className="mt-6 flex items-center gap-3" style={{ opacity: 0.6 }}>
-          <Image src="/images/logo-time-v2.png" alt="TIME" width={28} height={28} />
-          <span style={{ color: "var(--text-muted)", fontSize: 13, fontWeight: 500 }}>powered by TIME</span>
-        </motion.div>
       </motion.div>
     </SlideBase>
   );
