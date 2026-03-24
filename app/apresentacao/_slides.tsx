@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 // ─── CONSTANTS ───
-const TOTAL = 15;
+const TOTAL = 16;
 const FONT = "var(--font-jakarta), 'Plus Jakarta Sans', system-ui, sans-serif";
 
 // ─── TYPE SCALES (presentation-size — big, bold, clear) ───
@@ -276,12 +276,12 @@ function Slide1() {
         variants={stagger} initial="hidden" animate="show"
       >
         {/* LOGOS */}
-        <motion.div variants={scaleReveal} className="flex items-center gap-6 mb-6" style={{
+        <motion.div variants={scaleReveal} className="flex items-center gap-8 mb-8" style={{
           filter: "drop-shadow(0 0 30px rgba(212,168,83,0.15))"
         }}>
-          <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={280} height={90} className="h-[66px] w-auto" />
-          <span style={{ fontSize: 28, fontWeight: 200, color: "rgba(212,168,83,0.5)" }}>+</span>
-          <Image src="/images/logo-time-v2.png" alt="TIME" width={200} height={65} className="h-[50px] w-auto" />
+          <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={360} height={116} className="h-[90px] w-auto" />
+          <span style={{ fontSize: 34, fontWeight: 200, color: "rgba(212,168,83,0.5)" }}>+</span>
+          <Image src="/images/logo-time-v2.png" alt="TIME" width={260} height={84} className="h-[70px] w-auto" />
         </motion.div>
 
         <motion.h1 variants={fadeUp} style={{
@@ -305,7 +305,7 @@ function Slide1() {
           borderTop: "1px solid rgba(212,168,83,0.15)"
         }}>
           {[
-            { n: "+500", l: "empresários conectados" },
+            { n: "+100", l: "empresários conectados" },
             { n: "R$2M+", l: "em negócios gerados" },
             { n: "48h", l: "para primeira conexão" },
           ].map((s, i) => (
@@ -412,25 +412,25 @@ function Slide3() {
           </motion.h2>
 
           <motion.p variants={fadeUp} style={{
-            fontSize: TYPE.body, color: "var(--text-secondary)",
-            marginTop: 16, maxWidth: 460, lineHeight: 1.7,
+            fontSize: TYPE.bodyLg, color: "var(--text-secondary)",
+            marginTop: 20, maxWidth: 520, lineHeight: 1.7,
           }}>
             Eventos genéricos, contatos que nunca respondem, grupos que não geram valor.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-5 grid grid-cols-3 gap-0">
+          <motion.div variants={fadeUp} className="mt-7 grid grid-cols-3 gap-0">
             {[
               { n: "87%", l: "acham networking ineficiente" },
               { n: "3h", l: "desperdiçadas em eventos sem retorno" },
               { n: "92%", l: "dos cartões nunca viram negócio" },
             ].map((s, i) => (
               <div key={i} style={{
-                padding: "18px 20px 18px 0",
+                padding: "22px 24px 22px 0",
                 borderLeft: i > 0 ? "1px solid rgba(212,168,83,0.15)" : "none",
-                paddingLeft: i > 0 ? 20 : 0,
+                paddingLeft: i > 0 ? 24 : 0,
               }}>
-                <p style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>{s.n}</p>
-                <p style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 8, lineHeight: 1.4, textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600 }}>{s.l}</p>
+                <p style={{ fontSize: "clamp(2.4rem, 4vw, 3.2rem)", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>{s.n}</p>
+                <p style={{ fontSize: 14, color: "var(--text-muted)", marginTop: 10, lineHeight: 1.4, textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600 }}>{s.l}</p>
               </div>
             ))}
           </motion.div>
@@ -472,11 +472,11 @@ function Slide4() {
       <CornerAccent position="tl" />
       <CornerAccent position="br" />
 
-      <motion.div className="relative z-10 flex items-center h-full px-[5%] gap-[4%]"
+      <motion.div className="relative z-10 flex items-center h-full px-[5%] gap-[2%]"
         variants={stagger} initial="hidden" animate="show"
       >
         {/* Left — title area */}
-        <div className="w-[38%] flex flex-col justify-center">
+        <div className="w-[36%] flex flex-col justify-center">
           <motion.h2 variants={fadeUp} style={{
             fontFamily: FONT, fontSize: TYPE.hero, fontWeight: 700,
             color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.05,
@@ -580,18 +580,18 @@ function Slide5() {
         <motion.div variants={fadeUp} className="w-16 h-[2px] mt-8 mb-8" style={{ background: "var(--gold)", opacity: 0.35 }} />
 
         {/* 3 pillars — horizontal */}
-        <motion.div variants={fadeUp} className="flex items-center gap-6">
+        <motion.div variants={fadeUp} className="flex items-center gap-8">
           {[
             { icon: "target", text: "Curadoria rigorosa" },
             { icon: "star", text: "Encontros com propósito" },
             { icon: "link", text: "Conexões que viram contratos" },
           ].map((item, i) => (
-            <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-xl" style={{
+            <div key={i} className="flex items-center gap-4 px-8 py-5 rounded-2xl" style={{
               background: "rgba(212,168,83,0.04)",
               border: "1px solid rgba(212,168,83,0.1)",
             }}>
-              <Icon name={item.icon} size={18} />
-              <span style={{ fontSize: 15, color: "var(--text-secondary)", fontWeight: 600, whiteSpace: "nowrap" }}>{item.text}</span>
+              <Icon name={item.icon} size={24} />
+              <span style={{ fontSize: 20, color: "var(--text-secondary)", fontWeight: 600, whiteSpace: "nowrap" }}>{item.text}</span>
             </div>
           ))}
         </motion.div>
@@ -601,7 +601,94 @@ function Slide5() {
 }
 
 // ════════════════════════════════════════════════════════════════
-// SLIDE 6 — SOLUÇÃO (split: text left + image right)
+// SLIDE 6 — PALESTRANTE / EXPERT (text left + image right)
+// ════════════════════════════════════════════════════════════════
+function SlideExpert() {
+  return (
+    <SlideBase>
+      {/* Background gradient */}
+      <div className="absolute inset-0" style={{
+        background: "radial-gradient(ellipse at 70% 50%, rgba(212,168,83,0.06), transparent 55%)"
+      }} />
+      <CornerAccent position="tl" />
+      <CornerAccent position="br" />
+
+      <motion.div className="relative z-10 flex items-center h-full px-[6%] gap-[4%]"
+        variants={stagger} initial="hidden" animate="show"
+      >
+        {/* Left — text */}
+        <div className="w-[45%] flex flex-col justify-center">
+          <Label>Palestrante</Label>
+          <motion.h2 variants={fadeUp} style={{
+            fontFamily: FONT, fontSize: TYPE.hero, fontWeight: 700,
+            color: "var(--text-primary)", lineHeight: 1.05, letterSpacing: "-0.03em",
+            marginBottom: 16,
+          }}>
+            <span className="text-gradient-gold-shine">MALLAS BARBER</span>
+          </motion.h2>
+
+          <motion.p variants={fadeUp} style={{
+            fontSize: TYPE.bodyLg, color: "var(--text-secondary)",
+            lineHeight: 1.7, maxWidth: 520,
+          }}>
+            Empresário e palestrante.<br />
+            Referência em posicionamento e networking.
+          </motion.p>
+
+          <motion.div variants={fadeUp} className="flex flex-col gap-5 mt-10">
+            {[
+              { icon: "users", text: "+98 mil seguidores" },
+              { icon: "star", text: "Presença em mídias (Band e SBT)" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-4 px-7 py-5 rounded-2xl" style={{
+                background: "linear-gradient(160deg, rgba(212,168,83,0.06) 0%, rgba(0,0,0,0.3) 100%)",
+                border: "1px solid rgba(212,168,83,0.12)",
+                backdropFilter: "blur(12px)",
+              }}>
+                <div style={{
+                  width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+                  background: "linear-gradient(135deg, rgba(212,168,83,0.15), rgba(212,168,83,0.04))",
+                  border: "1px solid rgba(212,168,83,0.2)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <Icon name={item.icon} size={24} />
+                </div>
+                <span style={{ fontSize: 22, color: "var(--text-secondary)", fontWeight: 600 }}>{item.text}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Right — image */}
+        <motion.div variants={slideR} className="w-[45%] relative rounded-3xl overflow-hidden"
+          style={{
+            border: "1px solid rgba(212,168,83,0.12)",
+            boxShadow: "0 0 60px rgba(212,168,83,0.06)",
+            aspectRatio: "3/4",
+          }}
+        >
+          <Image
+            src="/images/expert - Mallas barber _ Carlos camilo2.png"
+            alt="Mallas Barber"
+            fill
+            className="object-cover object-top"
+          />
+          {/* Gradient overlay bottom */}
+          <div className="absolute inset-0" style={{
+            background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%)",
+          }} />
+          {/* Gradient overlay left */}
+          <div className="absolute inset-0" style={{
+            background: "linear-gradient(to right, var(--bg-0) 0%, transparent 20%)",
+          }} />
+        </motion.div>
+      </motion.div>
+    </SlideBase>
+  );
+}
+
+// ════════════════════════════════════════════════════════════════
+// SLIDE 7 — SOLUÇÃO (split: text left + image right)
 // ════════════════════════════════════════════════════════════════
 function Slide6() {
   const features = [
@@ -623,20 +710,20 @@ function Slide6() {
       <CornerAccent position="tl" />
       <CornerAccent position="br" />
 
-      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[6%]" style={{ marginTop: "-3%" }}
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[4%]"
         variants={stagger} initial="hidden" animate="show"
       >
         {/* Top section — title + description centered */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-12">
           <motion.h2 variants={fadeUp} style={{
-            fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
+            fontFamily: FONT, fontSize: TYPE.hero, fontWeight: 700,
             color: "var(--text-primary)", lineHeight: 1.05, letterSpacing: "-0.03em",
           }}>
             <span className="text-gradient-gold-shine">Rede de Valor</span>
           </motion.h2>
           <motion.p variants={fadeUp} style={{
-            fontSize: TYPE.body, color: "var(--text-secondary)",
-            lineHeight: 1.7, maxWidth: 520, marginTop: 14, marginLeft: "auto", marginRight: "auto",
+            fontSize: TYPE.bodyLg, color: "var(--text-secondary)",
+            lineHeight: 1.7, maxWidth: 640, marginTop: 20, marginLeft: "auto", marginRight: "auto",
           }}>
             Uma comunidade exclusiva onde cada membro foi selecionado
             por seu potencial de gerar valor real.
@@ -644,10 +731,10 @@ function Slide6() {
         </div>
 
         {/* Feature cards — 3 columns */}
-        <div className="grid grid-cols-3 gap-5" style={{ maxWidth: 1100, width: "100%" }}>
+        <div className="grid grid-cols-3 gap-7" style={{ maxWidth: 1300, width: "100%" }}>
           {features.map((item, i) => (
             <motion.div key={i} variants={fadeUp}
-              className="relative overflow-hidden rounded-2xl p-6"
+              className="relative overflow-hidden rounded-2xl p-8"
               style={{
                 background: "linear-gradient(160deg, rgba(212,168,83,0.06) 0%, rgba(0,0,0,0.3) 100%)",
                 border: "1px solid rgba(212,168,83,0.1)",
@@ -659,23 +746,23 @@ function Slide6() {
                 y: -3,
               }}
             >
-              <span className="absolute top-2 right-3 select-none pointer-events-none" style={{
-                fontSize: 60, fontWeight: 800, color: "rgba(212,168,83,0.03)", lineHeight: 1,
+              <span className="absolute top-3 right-4 select-none pointer-events-none" style={{
+                fontSize: 80, fontWeight: 800, color: "rgba(212,168,83,0.03)", lineHeight: 1,
               }}>0{i + 1}</span>
 
               <div style={{
-                width: 44, height: 44, borderRadius: 10,
+                width: 56, height: 56, borderRadius: 12,
                 background: "linear-gradient(135deg, rgba(212,168,83,0.15), rgba(212,168,83,0.04))",
                 border: "1px solid rgba(212,168,83,0.2)",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 boxShadow: "0 0 20px rgba(212,168,83,0.05)",
-                marginBottom: 14,
+                marginBottom: 18,
               }}>
-                <Icon name={item.icon} size={22} />
+                <Icon name={item.icon} size={28} />
               </div>
 
-              <h3 style={{ fontSize: 20, fontWeight: 700, color: "var(--gold)", marginBottom: 8 }}>{item.title}</h3>
-              <p style={{ fontSize: 14, color: "var(--text-muted)", lineHeight: 1.6 }}>{item.desc}</p>
+              <h3 style={{ fontSize: 26, fontWeight: 700, color: "var(--gold)", marginBottom: 10 }}>{item.title}</h3>
+              <p style={{ fontSize: 18, color: "var(--text-muted)", lineHeight: 1.6 }}>{item.desc}</p>
 
               <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{
                 background: "linear-gradient(to right, transparent, rgba(212,168,83,0.12), transparent)",
@@ -685,17 +772,17 @@ function Slide6() {
         </div>
 
         {/* Bottom stats bar */}
-        <motion.div variants={fadeUp} className="flex items-center justify-center gap-12 mt-8 pt-6" style={{
-          borderTop: "1px solid rgba(212,168,83,0.08)", maxWidth: 1100, width: "100%",
+        <motion.div variants={fadeUp} className="flex items-center justify-center gap-16 mt-10 pt-8" style={{
+          borderTop: "1px solid rgba(212,168,83,0.08)", maxWidth: 1300, width: "100%",
         }}>
           {[
-            { n: "+500", l: "membros ativos" },
+            { n: "+100", l: "membros ativos" },
             { n: "12", l: "eventos/ano" },
             { n: "R$2M+", l: "em negócios gerados" },
           ].map((s, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <span style={{ fontSize: 26, fontWeight: 700, color: "var(--gold)" }}>{s.n}</span>
-              <span style={{ fontSize: 12, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 500 }}>{s.l}</span>
+            <div key={i} className="flex items-center gap-4">
+              <span style={{ fontSize: 34, fontWeight: 700, color: "var(--gold)" }}>{s.n}</span>
+              <span style={{ fontSize: 15, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 500 }}>{s.l}</span>
             </div>
           ))}
         </motion.div>
@@ -751,7 +838,7 @@ function Slide7() {
             }}>RV</span>
 
             <div className="mb-8">
-              <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={220} height={72} className="h-14 w-auto opacity-90" />
+              <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={300} height={98} className="h-20 w-auto opacity-90" />
             </div>
 
             <ul className="space-y-5">
@@ -844,46 +931,97 @@ function Slide7() {
 // ════════════════════════════════════════════════════════════════
 // SLIDE 8 — MARCA REVEAL (cinematic centered)
 // ════════════════════════════════════════════════════════════════
+const staggerSlow = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.2, delayChildren: 0.3 } },
+};
+
 function Slide8() {
   return (
     <SlideBase>
+      {/* 1. Background com profundidade — gradient mesh multi-layer */}
       <div className="absolute inset-0" style={{
-        background: "radial-gradient(circle at 50% 50%, rgba(212,168,83,0.08), transparent 55%)"
+        background: "radial-gradient(ellipse at 50% 40%, rgba(212,168,83,0.1) 0%, transparent 50%), radial-gradient(ellipse at 30% 70%, rgba(212,168,83,0.04) 0%, transparent 40%), radial-gradient(ellipse at 70% 30%, rgba(212,168,83,0.03) 0%, transparent 45%)"
+      }} />
+      <div className="absolute inset-0" style={{
+        background: "radial-gradient(circle at 50% 45%, rgba(212,168,83,0.06), transparent 35%)",
       }} />
       <GoldDust />
 
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <svg width="500" height="500" viewBox="0 0 400 400" fill="none" style={{ opacity: 0.12 }}>
-          <path d="M200 20L380 200L200 380L20 200Z" stroke="var(--gold)" strokeWidth="1.5" />
-          <path d="M200 60L340 200L200 340L60 200Z" stroke="var(--gold)" strokeWidth="1" />
-          <path d="M200 100L300 200L200 300L100 200Z" stroke="var(--gold)" strokeWidth="0.5" />
-        </svg>
+      {/* 4. Linhas decorativas gold nos cantos (inspirado peritoempnl) */}
+      <div className="absolute top-8 left-8 pointer-events-none" style={{ opacity: 0.15 }}>
+        <div style={{ width: 80, height: 1, background: "linear-gradient(to right, var(--gold), transparent)" }} />
+        <div style={{ width: 1, height: 80, background: "linear-gradient(to bottom, var(--gold), transparent)" }} />
+      </div>
+      <div className="absolute top-8 right-8 pointer-events-none" style={{ opacity: 0.15 }}>
+        <div style={{ width: 80, height: 1, background: "linear-gradient(to left, var(--gold), transparent)", marginLeft: "auto" }} />
+        <div style={{ width: 1, height: 80, background: "linear-gradient(to bottom, var(--gold), transparent)", marginLeft: "auto" }} />
+      </div>
+      <div className="absolute bottom-8 left-8 pointer-events-none" style={{ opacity: 0.15 }}>
+        <div style={{ width: 1, height: 80, background: "linear-gradient(to top, var(--gold), transparent)" }} />
+        <div style={{ width: 80, height: 1, background: "linear-gradient(to right, var(--gold), transparent)" }} />
+      </div>
+      <div className="absolute bottom-8 right-8 pointer-events-none" style={{ opacity: 0.15 }}>
+        <div style={{ width: 1, height: 80, background: "linear-gradient(to top, var(--gold), transparent)", marginLeft: "auto" }} />
+        <div style={{ width: 80, height: 1, background: "linear-gradient(to left, var(--gold), transparent)", marginLeft: "auto" }} />
       </div>
 
       <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center"
-        variants={stagger} initial="hidden" animate="show"
+        variants={staggerSlow} initial="hidden" animate="show"
       >
-        <motion.div variants={scaleReveal} className="mb-10">
-          <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={320} height={105} />
+        {/* 2. Logo com halo glow dourado + breathing pulse */}
+        <motion.div variants={scaleReveal} className="relative" style={{ marginBottom: -10 }}>
+          {/* Halo glow */}
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              filter: "blur(50px)",
+              background: "rgba(212,168,83,0.15)",
+              transform: "scale(2.2)",
+              borderRadius: "50%",
+            }}
+            animate={{
+              opacity: [0.5, 1, 0.5],
+              scale: [2, 2.4, 2],
+            }}
+            transition={{
+              duration: 4,
+              ease: "easeInOut",
+              repeat: Infinity,
+            }}
+          />
+          <Image src="/images/logo-rede-de-valor-branco-v2.png" alt="Rede de Valor" width={320} height={105} className="relative" />
         </motion.div>
-        <motion.div variants={fadeUp} className="mb-8" style={{ width: 70, height: 2, background: "var(--gold)", borderRadius: 1 }} />
+
+        {/* 4. Barra separadora animada (expande ao entrar) */}
+        <motion.div
+          className="mb-3"
+          style={{ height: 2, background: "var(--gold)", borderRadius: 1 }}
+          initial={{ width: 0, opacity: 0 }}
+          animate={{ width: 100, opacity: 1 }}
+          transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        />
+
+        {/* 3. Título com text-shadow glow em "conexões" */}
         <motion.h2 variants={fadeUp} style={{
-          fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
+          fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
           color: "var(--text-primary)", lineHeight: 1.15, letterSpacing: "-0.02em",
         }}>
-          Onde <span style={{ color: "var(--gold)", fontWeight: 700 }}>conexões</span> se tornam<br />
+          Onde <span style={{
+            color: "var(--gold)",
+            fontWeight: 700,
+            textShadow: "0 0 30px rgba(212,168,83,0.5), 0 0 60px rgba(212,168,83,0.2)",
+          }}>conexões</span> se tornam<br />
           negócios reais.
         </motion.h2>
+
+        {/* Subtítulo maior */}
         <motion.p variants={fadeUp} style={{
-          fontSize: TYPE.bodyLg, color: "var(--text-secondary)",
-          marginTop: 24, maxWidth: 520, lineHeight: 1.7,
+          fontSize: "clamp(1.3rem, 2.2vw, 1.6rem)", color: "var(--text-secondary)",
+          marginTop: 20, maxWidth: 600, lineHeight: 1.7,
         }}>
           Mais que uma comunidade. Um ecossistema vivo de oportunidades.
         </motion.p>
-        <motion.div variants={fadeIn} className="mt-10 flex items-center gap-4">
-          <Image src="/images/logo-time-v2.png" alt="TIME" width={36} height={36} style={{ opacity: 0.8 }} />
-          <span style={{ color: "var(--text-muted)", fontSize: 14, fontWeight: 500 }}>powered by TIME</span>
-        </motion.div>
       </motion.div>
     </SlideBase>
   );
@@ -904,17 +1042,17 @@ function Slide9() {
         variants={stagger} initial="hidden" animate="show"
       >
         {/* Left text */}
-        <div className="flex flex-col w-[38%]">
+        <div className="flex flex-col w-[35%]">
           <Label>O Ecossistema</Label>
           <motion.h2 variants={fadeUp} style={{
-            fontFamily: FONT, fontSize: TYPE.main, fontWeight: 700,
-            color: "var(--text-primary)", marginBottom: 24, letterSpacing: "-0.02em", lineHeight: 1.1,
+            fontFamily: FONT, fontSize: TYPE.hero, fontWeight: 700,
+            color: "var(--text-primary)", marginBottom: 28, letterSpacing: "-0.02em", lineHeight: 1.1,
           }}>
             Três camadas<br />de{" "}
             <span className="text-gradient-gold-shine">valor</span>
           </motion.h2>
           <motion.p variants={fadeUp} style={{
-            fontSize: TYPE.body, color: "var(--text-secondary)", lineHeight: 1.7, maxWidth: 400,
+            fontSize: TYPE.bodyLg, color: "var(--text-secondary)", lineHeight: 1.7, maxWidth: 440,
           }}>
             Do acesso amplo ao inner circle exclusivo.
             Cada nível desbloqueia oportunidades maiores.
@@ -922,68 +1060,68 @@ function Slide9() {
         </div>
 
         {/* Right rings — improved with connecting lines and icons */}
-        <motion.div variants={scaleIn} className="relative" style={{ width: 480, height: 480 }}>
+        <motion.div variants={scaleIn} className="relative" style={{ width: 580, height: 580 }}>
           {/* Radial glow behind */}
           <div className="absolute" style={{
             top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-            width: 300, height: 300, borderRadius: "50%",
+            width: 380, height: 380, borderRadius: "50%",
             background: "radial-gradient(circle, rgba(212,168,83,0.08) 0%, transparent 70%)",
           }} />
 
           {/* Outer ring */}
           <motion.div className="absolute rounded-full" style={{
-            top: 0, left: 0, width: 480, height: 480,
+            top: 0, left: 0, width: 580, height: 580,
             border: "1px solid rgba(212,168,83,0.12)",
             background: "radial-gradient(circle, transparent 60%, rgba(212,168,83,0.02) 100%)",
           }} animate={{ scale: [1, 1.015, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
           <p className="absolute" style={{
-            top: 16, left: "50%", transform: "translateX(-50%)",
-            fontSize: 13, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.18em", whiteSpace: "nowrap", fontWeight: 600,
+            top: 18, left: "50%", transform: "translateX(-50%)",
+            fontSize: 16, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.18em", whiteSpace: "nowrap", fontWeight: 600,
           }}>Comunidade Ampliada</p>
           {/* Outer ring small dots */}
           {[45, 135, 225, 315].map((deg, i) => (
             <motion.div key={`dot-o-${i}`} className="absolute rounded-full" style={{
-              width: 5, height: 5, background: "rgba(212,168,83,0.2)",
-              top: 240 + Math.sin(deg * Math.PI / 180) * 238,
-              left: 240 + Math.cos(deg * Math.PI / 180) * 238,
+              width: 6, height: 6, background: "rgba(212,168,83,0.2)",
+              top: 290 + Math.sin(deg * Math.PI / 180) * 288,
+              left: 290 + Math.cos(deg * Math.PI / 180) * 288,
               transform: "translate(-50%, -50%)",
             }} animate={{ opacity: [0.15, 0.5, 0.15] }} transition={{ duration: 3, repeat: Infinity, delay: i * 0.8 }} />
           ))}
 
           {/* Middle ring */}
           <motion.div className="absolute rounded-full" style={{
-            top: 80, left: 80, width: 320, height: 320,
+            top: 95, left: 95, width: 390, height: 390,
             border: "1.5px solid rgba(212,168,83,0.2)", background: "rgba(212,168,83,0.015)",
           }} animate={{ scale: [1, 1.02, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} />
           <p className="absolute" style={{
-            top: 98, left: "50%", transform: "translateX(-50%)",
-            fontSize: 13, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.18em", whiteSpace: "nowrap", fontWeight: 600,
+            top: 115, left: "50%", transform: "translateX(-50%)",
+            fontSize: 16, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.18em", whiteSpace: "nowrap", fontWeight: 600,
           }}>Membros Ativos</p>
 
           {/* Inner ring — golden glow */}
           <motion.div className="absolute rounded-full" style={{
-            top: 170, left: 170, width: 140, height: 140,
+            top: 205, left: 205, width: 170, height: 170,
             border: "2px solid rgba(212,168,83,0.4)",
             background: "radial-gradient(circle, rgba(212,168,83,0.08) 0%, rgba(212,168,83,0.02) 100%)",
             boxShadow: "0 0 40px rgba(212,168,83,0.08), inset 0 0 30px rgba(212,168,83,0.04)",
           }} animate={{ scale: [1, 1.04, 1] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
-          <div className="absolute text-center" style={{ top: 200, left: 185, width: 110 }}>
-            <Icon name="diamond" size={22} color="var(--gold)" />
-            <p style={{ fontSize: 15, fontWeight: 700, color: "var(--gold)", lineHeight: 1.2, marginTop: 4 }}>Inner<br />Circle</p>
+          <div className="absolute flex flex-col items-center justify-center text-center" style={{ top: 205, left: 205, width: 170, height: 170 }}>
+            <Icon name="diamond" size={28} color="var(--gold)" />
+            <p style={{ fontSize: 20, fontWeight: 700, color: "var(--gold)", lineHeight: 1.2, marginTop: 6 }}>Inner<br />Circle</p>
           </div>
 
           {/* Satellite labels with icons */}
-          <div className="absolute flex items-center gap-2" style={{ top: 230, left: -100 }}>
-            <Icon name="star" size={16} color="var(--gold-light)" />
-            <p style={{ fontSize: 13, color: "var(--gold-light)", lineHeight: 1.3, fontWeight: 600 }}>Eventos<br />Exclusivos</p>
+          <div className="absolute flex items-center gap-3" style={{ top: 280, left: -120 }}>
+            <Icon name="star" size={20} color="var(--gold-light)" />
+            <p style={{ fontSize: 16, color: "var(--gold-light)", lineHeight: 1.3, fontWeight: 600 }}>Eventos<br />Exclusivos</p>
           </div>
-          <div className="absolute flex items-center gap-2" style={{ top: 230, right: -110 }}>
-            <p style={{ fontSize: 13, color: "var(--gold-light)", lineHeight: 1.3, fontWeight: 600, textAlign: "right" }}>Matchmaking<br />VIP</p>
-            <Icon name="link" size={16} color="var(--gold-light)" />
+          <div className="absolute flex items-center gap-3" style={{ top: 280, right: -130 }}>
+            <p style={{ fontSize: 16, color: "var(--gold-light)", lineHeight: 1.3, fontWeight: 600, textAlign: "right" }}>Matchmaking<br />VIP</p>
+            <Icon name="link" size={20} color="var(--gold-light)" />
           </div>
-          <div className="absolute flex items-center gap-2" style={{ bottom: 30, left: "50%", transform: "translateX(-50%)" }}>
-            <Icon name="users" size={16} color="var(--gold-light)" />
-            <p style={{ fontSize: 13, color: "var(--gold-light)", whiteSpace: "nowrap", fontWeight: 600 }}>Networking Curado</p>
+          <div className="absolute flex items-center gap-3" style={{ bottom: 35, left: "50%", transform: "translateX(-50%)" }}>
+            <Icon name="users" size={20} color="var(--gold-light)" />
+            <p style={{ fontSize: 16, color: "var(--gold-light)", whiteSpace: "nowrap", fontWeight: 600 }}>Networking Curado</p>
           </div>
         </motion.div>
       </motion.div>
@@ -1024,7 +1162,7 @@ function Slide10() {
 
         <div className="grid grid-cols-3 gap-5" style={{ maxWidth: 1050, margin: "0 auto" }}>
           {benefits.map((b, i) => (
-            <motion.div key={i} variants={fadeUp} className="card-premium p-6">
+            <motion.div key={i} variants={fadeUp} className="card-premium p-6 flex flex-col">
               <div style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(212,168,83,0.08)", border: "1px solid rgba(212,168,83,0.15)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
                 <Icon name={b.icon} size={24} />
               </div>
@@ -1042,12 +1180,12 @@ function Slide10() {
 // SLIDE 11 — IMPACTO (big editorial numbers, centered)
 // ════════════════════════════════════════════════════════════════
 function Slide11({ active }: { active: boolean }) {
-  const c1 = useCounter(500, 1400, active);
+  const c1 = useCounter(100, 1400, active);
   const c2 = useCounter(2, 800, active);
   const c3 = useCounter(48, 1200, active);
 
   const stats = [
-    { v: `+${c1}`, l: "Conexões Estratégicas", icon: "users", desc: "empresários conectados gerando valor mútuo" },
+    { v: `+${c1}`, l: "Membros Ativos", icon: "users", desc: "empresários conectados gerando valor mútuo" },
     { v: `R$${c2}M+`, l: "Em Negócios Gerados", icon: "diamond", desc: "em contratos fechados entre membros" },
     { v: String(c3), l: "Eventos Realizados", icon: "calendar", desc: "encontros presenciais com resultado" },
   ];
@@ -1420,41 +1558,43 @@ function Slide14() {
             }} />
           </motion.div>
 
-          {/* Center divider with "vs" */}
+          {/* Center divider with "VS" — larger, more prominent */}
           <div className="relative z-20 flex items-center" style={{ width: 0 }}>
             <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2" style={{
-              width: 44, height: 44, borderRadius: "50%",
-              background: "var(--bg-0)", border: "2px solid rgba(212,168,83,0.3)",
+              width: 52, height: 52, borderRadius: "50%",
+              background: "linear-gradient(135deg, rgba(212,168,83,0.15), var(--bg-0))",
+              border: "2px solid rgba(212,168,83,0.4)",
               display: "flex", alignItems: "center", justifyContent: "center",
-              boxShadow: "0 0 20px rgba(0,0,0,0.5)",
+              boxShadow: "0 0 30px rgba(212,168,83,0.12), 0 0 60px rgba(0,0,0,0.5)",
               zIndex: 30,
             }}>
-              <span style={{ fontSize: 12, fontWeight: 700, color: "var(--gold)", letterSpacing: "0.05em" }}>VS</span>
+              <span style={{ fontSize: 13, fontWeight: 800, color: "var(--gold)", letterSpacing: "0.08em" }}>VS</span>
             </div>
           </div>
 
           {/* "Com" card — elevated, premium, glowing */}
           <motion.div variants={slideR} className="flex-1 p-8 rounded-r-2xl relative overflow-hidden" style={{
-            background: "linear-gradient(160deg, rgba(212,168,83,0.08) 0%, rgba(212,168,83,0.02) 100%)",
-            border: "1px solid rgba(212,168,83,0.2)",
-            boxShadow: "0 0 50px rgba(212,168,83,0.06), inset 0 1px 0 rgba(212,168,83,0.15)",
+            background: "linear-gradient(160deg, rgba(212,168,83,0.1) 0%, rgba(212,168,83,0.02) 100%)",
+            border: "1px solid rgba(212,168,83,0.25)",
+            boxShadow: "0 0 60px rgba(212,168,83,0.08), inset 0 1px 0 rgba(212,168,83,0.2)",
           }}>
             {/* Gold shimmer top */}
             <div className="absolute top-0 left-0 right-0 h-[1px]" style={{
-              background: "linear-gradient(to right, transparent, rgba(212,168,83,0.4), transparent)",
+              background: "linear-gradient(to right, transparent, rgba(212,168,83,0.5), transparent)",
             }} />
 
             {/* Watermark */}
             <span className="absolute top-3 right-4 select-none pointer-events-none" style={{
-              fontSize: 72, fontWeight: 800, color: "rgba(212,168,83,0.03)", lineHeight: 1,
+              fontSize: 72, fontWeight: 800, color: "rgba(212,168,83,0.04)", lineHeight: 1,
             }}>RV</span>
 
             <div className="flex items-center gap-3 mb-6">
               <div style={{
                 width: 36, height: 36, borderRadius: 8,
-                background: "linear-gradient(135deg, rgba(212,168,83,0.15), rgba(212,168,83,0.05))",
-                border: "1px solid rgba(212,168,83,0.2)",
+                background: "linear-gradient(135deg, rgba(212,168,83,0.2), rgba(212,168,83,0.08))",
+                border: "1px solid rgba(212,168,83,0.25)",
                 display: "flex", alignItems: "center", justifyContent: "center",
+                boxShadow: "0 0 15px rgba(212,168,83,0.08)",
               }}>
                 <Icon name="diamond" size={16} />
               </div>
@@ -1465,7 +1605,7 @@ function Slide14() {
               {withItems.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="flex-shrink-0 mt-0.5">
-                    <circle cx="10" cy="10" r="9" stroke="rgba(212,168,83,0.2)" strokeWidth="1"/>
+                    <circle cx="10" cy="10" r="9" stroke="rgba(212,168,83,0.25)" strokeWidth="1"/>
                     <path d="M6 10L9 13L14 7" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <span style={{ fontSize: 16, color: "var(--text-secondary)", lineHeight: 1.5, fontWeight: 500 }}>{item}</span>
@@ -1475,7 +1615,7 @@ function Slide14() {
 
             {/* Bottom accent */}
             <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{
-              background: "linear-gradient(to right, transparent, rgba(212,168,83,0.25), transparent)",
+              background: "linear-gradient(to right, transparent, rgba(212,168,83,0.3), transparent)",
             }} />
           </motion.div>
         </div>
@@ -1561,7 +1701,7 @@ function Slide15() {
         {/* Social proof bar */}
         <motion.div variants={fadeUp} className="mt-10 flex items-center gap-8">
           {[
-            { n: "+500", l: "membros" },
+            { n: "+100", l: "membros" },
             { n: "R$2M+", l: "gerados" },
             { n: "48", l: "eventos" },
           ].map((s, i) => (
@@ -1586,16 +1726,17 @@ const SLIDES: Record<number, React.FC<{ active: boolean }>> = {
   2: () => <Slide3 />,
   3: () => <Slide4 />,
   4: () => <Slide5 />,
-  5: () => <Slide6 />,
-  6: () => <Slide7 />,
-  7: () => <Slide8 />,
-  8: () => <Slide9 />,
-  9: () => <Slide10 />,
-  10: ({ active }) => <Slide11 active={active} />,
-  11: () => <Slide12 />,
-  12: () => <Slide13 />,
-  13: () => <Slide14 />,
-  14: () => <Slide15 />,
+  5: () => <SlideExpert />,
+  6: () => <Slide6 />,
+  7: () => <Slide7 />,
+  8: () => <Slide8 />,
+  9: () => <Slide9 />,
+  10: () => <Slide10 />,
+  11: ({ active }) => <Slide11 active={active} />,
+  12: () => <Slide12 />,
+  13: () => <Slide13 />,
+  14: () => <Slide14 />,
+  15: () => <Slide15 />,
 };
 
 // ════════════════════════════════════════════════════════════════
@@ -1604,9 +1745,25 @@ const SLIDES: Record<number, React.FC<{ active: boolean }>> = {
 export default function Apresentacao() {
   const [slide, setSlide] = useState(0);
   const [, setDir] = useState(1);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const touchRef = useRef<number | null>(null);
   const slideRef = useRef(slide);
+  const containerRef = useRef<HTMLDivElement>(null);
   slideRef.current = slide;
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      containerRef.current?.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+  };
+
+  useEffect(() => {
+    const onFsChange = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", onFsChange);
+    return () => document.removeEventListener("fullscreenchange", onFsChange);
+  }, []);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -1617,6 +1774,13 @@ export default function Apresentacao() {
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         if (slideRef.current > 0) { setDir(-1); setSlide(s => s - 1); }
+      }
+      if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        toggleFullscreen();
+      }
+      if (e.key === "Escape" && document.fullscreenElement) {
+        document.exitFullscreen?.();
       }
     };
     window.addEventListener("keydown", handler);
@@ -1638,7 +1802,7 @@ export default function Apresentacao() {
   const CurrentSlide = SLIDES[slide];
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden select-none"
+    <div ref={containerRef} className="relative w-screen h-screen overflow-hidden select-none"
       style={{ background: "var(--bg-0)", fontFamily: FONT }}
       onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}
     >
@@ -1693,6 +1857,22 @@ export default function Apresentacao() {
           <span className="ml-4" style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 500 }}>
             {String(slide + 1).padStart(2, "0")}/{TOTAL}
           </span>
+          <button onClick={toggleFullscreen}
+            className="ml-4 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110"
+            style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}
+            aria-label={isFullscreen ? "Sair da tela cheia" : "Tela cheia"}
+            title={isFullscreen ? "Sair da tela cheia (F)" : "Tela cheia (F)"}
+          >
+            {isFullscreen ? (
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M5 1v3H1M9 1v3h4M5 13v-3H1M9 13v-3h4" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            ) : (
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1 5V1h4M9 1h4v4M1 9v4h4M13 9v4H9" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            )}
+          </button>
         </div>
       </div>
     </div>
