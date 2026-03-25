@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+html, body {
+  overflow-x: hidden;
+}
+
+/* Hero logos — desktop only */
+#hero-logos { display: none !important; }
+@media (min-width: 768px) {
+  #hero-logos { display: flex !important; }
+}
+
+/* Hide scrollbar for horizontal carousels */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
 /* ============================================================
    DESIGN TOKENS — Premium Black & Gold
    ============================================================ */
@@ -12,13 +26,13 @@
   --gold-soft: rgba(212, 168, 83, 0.08);
   --gold-glow: rgba(212, 168, 83, 0.15);
 
-  /* Surfaces — rich blacks */
-  --bg-0: #000000;
-  --bg-1: #050505;
-  --bg-2: #0a0a0a;
-  --bg-3: #111111;
-  --bg-4: #181818;
-  --bg-5: #1f1f1f;
+  /* Surfaces — warm blacks */
+  --bg-0: #030303;
+  --bg-1: #070707;
+  --bg-2: #0c0b0a;
+  --bg-3: #131210;
+  --bg-4: #1a1917;
+  --bg-5: #21201d;
   --bg-card: rgba(15, 15, 15, 0.7);
 
   /* Text */
@@ -55,6 +69,41 @@
     background: var(--bg-0);
     color: var(--text-primary);
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* GPU-accelerated sections for smooth scroll */
+  section, .card-premium, .bento-card-light {
+    will-change: auto;
+    contain: layout style;
+  }
+
+  /* Prevent layout thrash on fixed elements */
+  .whatsapp-float, nav {
+    will-change: transform;
+  }
+
+  /* Video should never show controls on mobile */
+  video::-webkit-media-controls { display: none !important; }
+  video::-webkit-media-controls-enclosure { display: none !important; }
+  video::-webkit-media-controls-panel { display: none !important; }
+
+  /* Ambient page glows — subtle warmth to break the flat black */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 10%, rgba(212,168,83,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 30%, rgba(180,140,60,0.02) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 50% at 50% 60%, rgba(212,168,83,0.025) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 40% at 15% 85%, rgba(180,140,60,0.02) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 50% at 85% 80%, rgba(212,168,83,0.018) 0%, transparent 50%);
   }
 
   ::selection {
@@ -78,6 +127,25 @@
    ============================================================ */
 .text-gold {
   color: var(--gold);
+}
+
+/* Bento card — top edge light line (Linear/Stripe pattern) */
+.bento-card-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  z-index: 2;
+}
+
+.text-gradient-white {
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 40%, rgba(255,255,255,0.55) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .text-gradient-gold {
@@ -240,7 +308,7 @@
 .bg-radial-gold {
   background: radial-gradient(
     ellipse 80% 60% at 50% 0%,
-    rgba(212, 168, 83, 0.06) 0%,
+    rgba(212, 168, 83, 0.07) 0%,
     transparent 70%
   );
 }
@@ -248,8 +316,33 @@
 .bg-radial-gold-center {
   background: radial-gradient(
     ellipse 60% 50% at 50% 50%,
-    rgba(212, 168, 83, 0.04) 0%,
+    rgba(212, 168, 83, 0.05) 0%,
     transparent 70%
+  );
+}
+
+/* Ambient glow variants for section variety */
+.bg-glow-left {
+  background: radial-gradient(
+    ellipse 50% 60% at 10% 50%,
+    rgba(212, 168, 83, 0.04) 0%,
+    transparent 60%
+  );
+}
+
+.bg-glow-right {
+  background: radial-gradient(
+    ellipse 50% 60% at 90% 50%,
+    rgba(212, 168, 83, 0.04) 0%,
+    transparent 60%
+  );
+}
+
+.bg-glow-bottom {
+  background: radial-gradient(
+    ellipse 70% 50% at 50% 100%,
+    rgba(212, 168, 83, 0.05) 0%,
+    transparent 60%
   );
 }
 
@@ -517,7 +610,6 @@
   height: 56px;
   border-radius: 50%;
   background: #25D366;
-  display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -531,6 +623,33 @@
   width: 28px;
   height: 28px;
   fill: white;
+}
+
+/* ============================================================
+   FUSION SECTION — Glass Cards + Center Glow
+   ============================================================ */
+.fusion-glass-card {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(212, 168, 83, 0.08);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 0 40px rgba(212, 168, 83, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.fusion-glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 60px rgba(212, 168, 83, 0.1), 0 12px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(212, 168, 83, 0.15);
+}
+
+/* Center glow pulse */
+@keyframes fusion-glow-pulse {
+  0%, 100% { opacity: 0.08; }
+  50% { opacity: 0.15; }
+}
+.fusion-center-glow {
+  animation: fusion-glow-pulse 4s ease-in-out infinite;
 }
 
 /* ============================================================
@@ -549,7 +668,8 @@
   .animate-gold-pulse,
   .animate-float,
   .animate-slow-spin,
-  .particle {
+  .particle,
+  .fusion-center-glow {
     animation: none !important;
   }
 
