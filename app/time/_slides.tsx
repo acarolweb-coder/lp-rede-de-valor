@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 // ─── CONSTANTS ───
-const TOTAL = 17;
+const TOTAL = 21;
 const FONT = "var(--font-jakarta), 'Plus Jakarta Sans', system-ui, sans-serif";
 
 // ─── COLOR PALETTE — TIME (Purple / Cyan) ───
@@ -232,8 +232,23 @@ function Icon({ name, size = 28, color = C.accent }: { name: string; size?: numb
       </svg>
     ),
     cross: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2v20M9 2h6v5H9zM4 9h16v3H4z"/>
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+        {/* Vertical beam */}
+        <path d="M10 1.5h4v21h-4z" fill={color} fillOpacity={0.15} stroke={color} />
+        {/* Horizontal beam */}
+        <path d="M4 6.5h16v4H4z" fill={color} fillOpacity={0.15} stroke={color} />
+        {/* Crown of thorns circle */}
+        <circle cx="12" cy="5.5" r="2.5" stroke={color} strokeWidth="0.8" strokeDasharray="1.5 1" fill="none" />
+        {/* Radiant glow lines */}
+        <line x1="12" y1="0" x2="12" y2="-0.5" stroke={color} strokeWidth="0.6" opacity={0.5} />
+        <line x1="6" y1="3" x2="5.2" y2="2.5" stroke={color} strokeWidth="0.6" opacity={0.4} />
+        <line x1="18" y1="3" x2="18.8" y2="2.5" stroke={color} strokeWidth="0.6" opacity={0.4} />
+        {/* Nail marks */}
+        <circle cx="12" cy="8.5" r="0.6" fill={color} fillOpacity={0.6} />
+        <circle cx="7" cy="8.5" r="0.5" fill={color} fillOpacity={0.4} />
+        <circle cx="17" cy="8.5" r="0.5" fill={color} fillOpacity={0.4} />
+        {/* Base pedestal */}
+        <path d="M8 22.5h8l-1-2H9l-1 2z" fill={color} fillOpacity={0.2} stroke={color} strokeWidth="0.8" />
       </svg>
     ),
     autism: (
@@ -269,8 +284,8 @@ function Label({ children }: { children: string }) {
 // ─── SLIDE WRAPPER ───
 function SlideBase({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`relative w-full h-full overflow-hidden noise ${className}`}
-      style={{ fontFamily: FONT, background: C.bg0 }}
+    <div className={`relative overflow-hidden noise ${className}`}
+      style={{ fontFamily: FONT, background: C.bg0, width: "100%", height: "100%", minHeight: "100vh" }}
     >{children}</div>
   );
 }
@@ -295,20 +310,26 @@ function Slide1() {
   return (
     <SlideBase>
       <StyleInjector />
-      {/* Background gradient */}
+      {/* Background photo */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/background-capa.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          style={{ opacity: 0.4 }}
+        />
+      </div>
+
+      {/* Dark overlay */}
       <div className="absolute inset-0" style={{
-        background: `radial-gradient(ellipse at 50% 40%, rgba(168,85,247,0.08), transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(6,182,212,0.05), transparent 50%)`
+        background: `linear-gradient(to bottom, rgba(3,3,3,0.5) 0%, rgba(3,3,3,0.65) 50%, rgba(3,3,3,0.8) 100%)`
       }} />
 
-      {/* Hourglass decoration */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <svg width="500" height="500" viewBox="0 0 500 500" fill="none" style={{ opacity: 0.04 }}>
-          <path d="M150 50h200v100L250 250 150 150V50z" stroke={C.accent} strokeWidth="1.5"/>
-          <path d="M150 450h200V350L250 250 150 350v100z" stroke={C.cyan} strokeWidth="1.5"/>
-          <ellipse cx="250" cy="50" rx="100" ry="10" stroke={C.accent} strokeWidth="1"/>
-          <ellipse cx="250" cy="450" rx="100" ry="10" stroke={C.cyan} strokeWidth="1"/>
-        </svg>
-      </div>
+      {/* Purple tint overlay */}
+      <div className="absolute inset-0" style={{
+        background: `radial-gradient(ellipse 60% 60% at 50% 40%, rgba(168,85,247,0.12), transparent)`
+      }} />
 
       <PurpleDust />
       <CornerAccent position="tl" />
@@ -505,22 +526,22 @@ function Slide4() {
       {/* Jesus background photo */}
       <div className="absolute inset-0">
         <Image
-          src="/images/jesus-bg.jpg"
+          src="/images/good-friday-scenes-with-jesus-christ.jpg"
           alt=""
           fill
           className="object-cover"
-          style={{ opacity: 0.25 }}
+          style={{ opacity: 0.35 }}
         />
       </div>
 
       {/* Dark overlay */}
       <div className="absolute inset-0" style={{
-        background: `linear-gradient(to bottom, rgba(3,3,3,0.6) 0%, rgba(3,3,3,0.75) 50%, rgba(3,3,3,0.85) 100%)`
+        background: `linear-gradient(to bottom, rgba(3,3,3,0.55) 0%, rgba(3,3,3,0.7) 50%, rgba(3,3,3,0.85) 100%)`
       }} />
 
       {/* Purple tint overlay */}
       <div className="absolute inset-0" style={{
-        background: `radial-gradient(ellipse 60% 60% at 50% 40%, rgba(168,85,247,0.12), transparent)`
+        background: `radial-gradient(ellipse 60% 60% at 50% 40%, rgba(168,85,247,0.15), transparent)`
       }} />
 
       <CornerAccent position="tl" />
@@ -925,7 +946,7 @@ function Slide8() {
 // ════════════════════════════════════════════════════════════════
 function Slide10() {
   const benefits = [
-    { image: "/images/benefit-networking.jpg", title: "Networking e Conexão de Elite" },
+    { image: "/images/mama-brito-networking.png", title: "Networking e Conexão de Elite" },
     { image: "/images/benefit-educacao.jpg", title: "Educação e Capacitação" },
     { image: "/images/benefit-expansao.jpg", title: "Expansão e Investimento" },
     { image: "/images/benefit-autoridade.jpg", title: "Autoridade e Exposição" },
@@ -994,6 +1015,192 @@ function Slide10() {
 
 
 // ════════════════════════════════════════════════════════════════
+// SLIDE 10B — BENEFÍCIOS DETALHAMENTO 1 (Networking + Educação + Expansão)
+// ════════════════════════════════════════════════════════════════
+function SlideBenefits1() {
+  const items = [
+    {
+      icon: "users",
+      title: "Networking e Conexão de Elite",
+      bullets: [
+        "12 Encontros Mensais com empresários de renome e grandes players do mercado brasileiro",
+        "Jantares de Negócios em ambiente de alta gastronomia para gerar valor e conexões exclusivas",
+        "Acesso ao Ecossistema de empresários de alta performance e governança",
+      ],
+    },
+    {
+      icon: "book",
+      title: "Educação e Capacitação",
+      bullets: [
+        "50% de desconto nos cursos (de R$ 1.994 por R$ 997) em qualquer uma das 9 formações",
+        "Benefício estendido aos colaboradores das empresas dos associados",
+        "Ciclos de 90 dias com metodologia híbrida focada em resultados rápidos",
+      ],
+    },
+    {
+      icon: "trending",
+      title: "Expansão e Investimento",
+      bullets: [
+        "Seleção de até 03 empresas dos associados para serem incubadas ao final dos 12 meses",
+        "Apoio na busca por investidores ou investimento direto da TIME Escola de Negócios",
+      ],
+    },
+  ];
+
+  return (
+    <SlideBase>
+      <div className="absolute inset-0" style={{
+        background: `radial-gradient(ellipse at 50% 30%, rgba(168,85,247,0.05), transparent 55%)`
+      }} />
+      <CornerAccent position="tl" />
+      <CornerAccent position="br" />
+
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[5%]" style={{ marginTop: "-2%" }}
+        variants={stagger} initial="hidden" animate="show"
+      >
+        <Label>Detalhamento</Label>
+        <motion.h2 variants={fadeUp} style={{
+          fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
+          color: C.textPrimary, lineHeight: 1.1, letterSpacing: "-0.03em",
+          marginBottom: 28, textAlign: "center",
+        }}>
+          Clube de{" "}
+          <span style={gradientTextShine}>Benefícios</span>
+        </motion.h2>
+
+        <div className="flex flex-col gap-4 w-full max-w-[1050px]">
+          {items.map((item, i) => (
+            <motion.div key={i} variants={fadeUp}
+              className="rounded-2xl p-5"
+              style={{
+                background: `linear-gradient(160deg, rgba(168,85,247,0.06) 0%, rgba(0,0,0,0.4) 100%)`,
+                border: `1px solid ${C.borderCard}`,
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div style={{
+                  width: 38, height: 38, borderRadius: 10, flexShrink: 0,
+                  background: `linear-gradient(135deg, rgba(168,85,247,0.15), rgba(6,182,212,0.08))`,
+                  border: `1px solid rgba(168,85,247,0.2)`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <Icon name={item.icon} size={18} />
+                </div>
+                <h3 style={{ fontSize: 17, fontWeight: 700, color: C.textPrimary }}>{item.title}</h3>
+              </div>
+              <div className="flex flex-col gap-1.5 pl-[50px]">
+                {item.bullets.map((b, j) => (
+                  <div key={j} className="flex items-start gap-2.5">
+                    <div style={{ width: 5, height: 5, borderRadius: "50%", background: C.accent, flexShrink: 0, marginTop: 7 }} />
+                    <p style={{ fontSize: 13, color: C.textSecondary, lineHeight: 1.5 }}>{b}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </SlideBase>
+  );
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// SLIDE 10C — BENEFÍCIOS DETALHAMENTO 2 (Autoridade + Internacionalização + Mentoria)
+// ════════════════════════════════════════════════════════════════
+function SlideBenefits2() {
+  const items = [
+    {
+      icon: "mic",
+      title: "Autoridade e Exposição de Marca",
+      bullets: [
+        "Experiência em Podcast no Laboratório de Comunicação e Oratória",
+        "Entrevista na Rádio com o monitor Tony Granado para posicionar sua autoridade",
+      ],
+    },
+    {
+      icon: "globe",
+      title: "Internacionalização (Missão China)",
+      bullets: [
+        "Curadoria de Negócios com viagem internacional guiada para a China (custos à parte)",
+        "Foco em resultados: voltar com Plano de Negócios montado e conexões reais de importação/produção",
+      ],
+    },
+    {
+      icon: "handshake",
+      title: "Mentoria e Plano Prático",
+      subtitle: "Você está a um aperto de mão dos empresários mais influentes do Brasil.",
+      bullets: [
+        "Acesso aos sócios Deivison Ferreira, Igor Ferreira e Mamá Brito para alinhamento estratégico",
+        "Cultura de Ambiência: competência técnica, estratégia e valores sólidos em um só lugar",
+      ],
+    },
+  ];
+
+  return (
+    <SlideBase>
+      <div className="absolute inset-0" style={{
+        background: `radial-gradient(ellipse at 50% 40%, rgba(6,182,212,0.04), transparent 55%)`
+      }} />
+      <CornerAccent position="tl" />
+      <CornerAccent position="br" />
+
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[5%]" style={{ marginTop: "-2%" }}
+        variants={stagger} initial="hidden" animate="show"
+      >
+        <Label>Detalhamento</Label>
+        <motion.h2 variants={fadeUp} style={{
+          fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
+          color: C.textPrimary, lineHeight: 1.1, letterSpacing: "-0.03em",
+          marginBottom: 28, textAlign: "center",
+        }}>
+          Clube de{" "}
+          <span style={gradientTextShine}>Benefícios</span>
+        </motion.h2>
+
+        <div className="flex flex-col gap-4 w-full max-w-[1050px]">
+          {items.map((item, i) => (
+            <motion.div key={i} variants={fadeUp}
+              className="rounded-2xl p-5"
+              style={{
+                background: `linear-gradient(160deg, rgba(168,85,247,0.06) 0%, rgba(0,0,0,0.4) 100%)`,
+                border: `1px solid ${C.borderCard}`,
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <div className="flex items-center gap-3 mb-1">
+                <div style={{
+                  width: 38, height: 38, borderRadius: 10, flexShrink: 0,
+                  background: `linear-gradient(135deg, rgba(168,85,247,0.15), rgba(6,182,212,0.08))`,
+                  border: `1px solid rgba(168,85,247,0.2)`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <Icon name={item.icon} size={18} />
+                </div>
+                <h3 style={{ fontSize: 17, fontWeight: 700, color: C.textPrimary }}>{item.title}</h3>
+              </div>
+              {"subtitle" in item && item.subtitle && (
+                <p style={{ fontSize: 12, color: C.accent, fontStyle: "italic", marginBottom: 6, paddingLeft: 50 }}>{item.subtitle}</p>
+              )}
+              <div className="flex flex-col gap-1.5 pl-[50px]" style={{ marginTop: !("subtitle" in item && item.subtitle) ? 8 : 0 }}>
+                {item.bullets.map((b, j) => (
+                  <div key={j} className="flex items-start gap-2.5">
+                    <div style={{ width: 5, height: 5, borderRadius: "50%", background: C.accent, flexShrink: 0, marginTop: 7 }} />
+                    <p style={{ fontSize: 13, color: C.textSecondary, lineHeight: 1.5 }}>{b}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </SlideBase>
+  );
+}
+
+
+// ════════════════════════════════════════════════════════════════
 // SLIDE 11 — NOSSOS CURSOS
 // ════════════════════════════════════════════════════════════════
 function Slide11() {
@@ -1050,6 +1257,139 @@ function Slide11() {
               <div>
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: C.textPrimary, lineHeight: 1.2 }}>{c.title}</h3>
                 <p style={{ fontSize: 13, color: C.textSecondary, marginTop: 2 }}>{c.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </SlideBase>
+  );
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// SLIDE 11B — CURSOS DETALHAMENTO 1 (cursos 1-5)
+// ════════════════════════════════════════════════════════════════
+function SlideCourses1() {
+  const courses = [
+    { icon: "briefcase", title: "Empreendedorismo", finalidade: "Construir ou reorganizar sua empresa com pilares sólidos. Do contrato social à cultura organizacional.", foco: "Transformar ideias em operações lucrativas em 90 dias." },
+    { icon: "brain", title: "Gestão e Liderança de Elite", finalidade: "Formar gestores de alta performance baseados em psicologia comportamental e disciplina militar.", foco: "Comandar times, delegar com eficiência e bater metas sob pressão." },
+    { icon: "target", title: "Marketing e Prospecção 360º", finalidade: "Dominar as ferramentas de atração de clientes (On e Off) para nunca mais ficar com a agenda vazia.", foco: "Prospecção ativa e criação de autoridade no mercado local." },
+    { icon: "trending", title: "Marketing e Vendas", finalidade: "Alinhar o discurso de marketing com o fechamento. Estratégias para aumentar o ticket médio imediatamente.", foco: "Técnicas de persuasão e fechamento de contratos de alto valor." },
+    { icon: "rocket", title: "Vendas Automotiva", finalidade: "Capacitação técnica específica para o setor de veículos. Avaliação, negociação e pós-venda.", foco: "Formação rápida para um dos setores mais aquecidos da economia." },
+  ];
+
+  return (
+    <SlideBase>
+      <div className="absolute inset-0" style={{
+        background: `radial-gradient(ellipse at 50% 30%, rgba(6,182,212,0.04), transparent 55%)`
+      }} />
+      <CornerAccent position="tl" />
+      <CornerAccent position="br" />
+
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[5%]" style={{ marginTop: "-2%" }}
+        variants={stagger} initial="hidden" animate="show"
+      >
+        <Label>Detalhamento</Label>
+        <motion.h2 variants={fadeUp} style={{
+          fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
+          color: C.textPrimary, lineHeight: 1.1, letterSpacing: "-0.03em",
+          marginBottom: 24, textAlign: "center",
+        }}>
+          Nossos{" "}
+          <span style={gradientTextShine}>Cursos</span>
+        </motion.h2>
+
+        <div className="flex flex-col gap-3 w-full max-w-[1050px]">
+          {courses.map((c, i) => (
+            <motion.div key={i} variants={fadeUp}
+              className="flex items-start gap-4 rounded-2xl px-5 py-4"
+              style={{
+                background: `linear-gradient(160deg, rgba(168,85,247,0.06) 0%, rgba(0,0,0,0.4) 100%)`,
+                border: `1px solid ${C.borderCard}`,
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <div style={{
+                width: 36, height: 36, borderRadius: 10, flexShrink: 0, marginTop: 2,
+                background: `linear-gradient(135deg, rgba(168,85,247,0.15), rgba(6,182,212,0.08))`,
+                border: `1px solid rgba(168,85,247,0.2)`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <Icon name={c.icon} size={17} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 style={{ fontSize: 15, fontWeight: 700, color: C.textPrimary, marginBottom: 3 }}>{c.title}</h3>
+                <p style={{ fontSize: 12, color: C.textSecondary, lineHeight: 1.45 }}>{c.finalidade}</p>
+                <p style={{ fontSize: 12, color: C.accent, lineHeight: 1.45, marginTop: 2 }}>
+                  <span style={{ fontWeight: 600 }}>Foco:</span> {c.foco}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </SlideBase>
+  );
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// SLIDE 11C — CURSOS DETALHAMENTO 2 (cursos 6-9)
+// ════════════════════════════════════════════════════════════════
+function SlideCourses2() {
+  const courses = [
+    { icon: "shield", title: "Criptoativos nos Negócios", finalidade: "Como utilizar moedas digitais de forma segura para a compra e venda de bens móveis e imóveis.", foco: "Transações modernas, legalidade tributária e proteção de patrimônio." },
+    { icon: "compass", title: "Inteligência Artificial na Prática", finalidade: "Implementar ferramentas de IA para ganhar tempo e produtividade na sua rotina pessoal e na sua empresa.", foco: "Automatização de processos e criação de conteúdo estratégico." },
+    { icon: "mic", title: "Comunicação e Oratória de Alto Impacto", finalidade: "Perder o medo e dominar a fala no palco, nas reuniões e nas câmeras (Podcast/Redes Sociais).", foco: "Treinamento prático de voz, postura e roteirização de fala." },
+    { icon: "book", title: "Gestão Tributária e Orçamentária", finalidade: "Blindagem financeira e inteligência fiscal para o cenário político atual. Oportunidades de economia de impostos.", foco: "Redução de custos e planejamento orçamentário estratégico." },
+  ];
+
+  return (
+    <SlideBase>
+      <div className="absolute inset-0" style={{
+        background: `radial-gradient(ellipse at 50% 40%, rgba(168,85,247,0.05), transparent 55%)`
+      }} />
+      <CornerAccent position="tl" />
+      <CornerAccent position="br" />
+
+      <motion.div className="relative z-10 flex flex-col items-center justify-center h-full px-[5%]" style={{ marginTop: "-2%" }}
+        variants={stagger} initial="hidden" animate="show"
+      >
+        <Label>Detalhamento</Label>
+        <motion.h2 variants={fadeUp} style={{
+          fontFamily: FONT, fontSize: TYPE.center, fontWeight: 700,
+          color: C.textPrimary, lineHeight: 1.1, letterSpacing: "-0.03em",
+          marginBottom: 24, textAlign: "center",
+        }}>
+          Nossos{" "}
+          <span style={gradientTextShine}>Cursos</span>
+        </motion.h2>
+
+        <div className="flex flex-col gap-4 w-full max-w-[1050px]">
+          {courses.map((c, i) => (
+            <motion.div key={i} variants={fadeUp}
+              className="flex items-start gap-4 rounded-2xl px-5 py-5"
+              style={{
+                background: `linear-gradient(160deg, rgba(168,85,247,0.06) 0%, rgba(0,0,0,0.4) 100%)`,
+                border: `1px solid ${C.borderCard}`,
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <div style={{
+                width: 40, height: 40, borderRadius: 12, flexShrink: 0, marginTop: 2,
+                background: `linear-gradient(135deg, rgba(168,85,247,0.15), rgba(6,182,212,0.08))`,
+                border: `1px solid rgba(168,85,247,0.2)`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <Icon name={c.icon} size={19} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: C.textPrimary, marginBottom: 4 }}>{c.title}</h3>
+                <p style={{ fontSize: 13, color: C.textSecondary, lineHeight: 1.5 }}>{c.finalidade}</p>
+                <p style={{ fontSize: 13, color: C.accent, lineHeight: 1.5, marginTop: 3 }}>
+                  <span style={{ fontWeight: 600 }}>Foco:</span> {c.foco}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -1418,15 +1758,19 @@ const SLIDES: Record<number, React.FC<{ active: boolean }>> = {
   5: () => <Slide6 />,
   6: () => <Slide7 />,
   7: () => <Slide8 />,
-  8: () => <Slide10 />,
-  9: () => <Slide11 />,
-  10: () => <Slide12 />,
-  11: () => <Slide13 />,
-  12: () => <Slide14 />,
-  13: () => <Slide15 />,
-  14: () => <Slide16 />,
-  15: () => <Slide17 />,
-  16: () => <Slide18 />,
+  8: () => <Slide10 />,          // Clube de Benefícios (resumo)
+  9: () => <SlideBenefits1 />,    // Benefícios detalhamento 1
+  10: () => <SlideBenefits2 />,   // Benefícios detalhamento 2
+  11: () => <Slide11 />,          // Nossos Cursos (resumo)
+  12: () => <SlideCourses1 />,    // Cursos detalhamento 1
+  13: () => <SlideCourses2 />,    // Cursos detalhamento 2
+  14: () => <Slide17 />,          // Professores e Mentores
+  15: () => <Slide12 />,          // Preço Âncora
+  16: () => <Slide13 />,          // R$ 9.900
+  17: () => <Slide14 />,          // Mas você não vai pagar
+  18: () => <Slide15 />,          // Preço Especial
+  19: () => <Slide16 />,          // Exclusividade
+  20: () => <Slide18 />,          // CTA Final
 };
 
 
@@ -1435,20 +1779,19 @@ const SLIDES: Record<number, React.FC<{ active: boolean }>> = {
 // ════════════════════════════════════════════════════════════════
 export default function ApresentacaoTIME() {
   const [slide, setSlide] = useState(0);
-  const [, setDir] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const touchRef = useRef<number | null>(null);
   const slideRef = useRef(slide);
   const containerRef = useRef<HTMLDivElement>(null);
   slideRef.current = slide;
 
-  const toggleFullscreen = () => {
+  const toggleFullscreen = useCallback(() => {
     if (!document.fullscreenElement) {
       containerRef.current?.requestFullscreen?.();
     } else {
       document.exitFullscreen?.();
     }
-  };
+  }, []);
 
   useEffect(() => {
     const onFsChange = () => setIsFullscreen(!!document.fullscreenElement);
@@ -1460,11 +1803,11 @@ export default function ApresentacaoTIME() {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight" || e.key === " ") {
         e.preventDefault();
-        if (slideRef.current < TOTAL - 1) { setDir(1); setSlide(s => s + 1); }
+        if (slideRef.current < TOTAL - 1) { setSlide(s => s + 1); }
       }
       if (e.key === "ArrowLeft") {
         e.preventDefault();
-        if (slideRef.current > 0) { setDir(-1); setSlide(s => s - 1); }
+        if (slideRef.current > 0) { setSlide(s => s - 1); }
       }
       if (e.key === "f" || e.key === "F") {
         e.preventDefault();
@@ -1476,11 +1819,11 @@ export default function ApresentacaoTIME() {
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, []);
+  }, [toggleFullscreen]);
 
-  const go = (n: number) => { setDir(n > slide ? 1 : -1); setSlide(n); };
-  const next = () => { if (slide < TOTAL - 1) { setDir(1); setSlide(s => s + 1); } };
-  const prev = () => { if (slide > 0) { setDir(-1); setSlide(s => s - 1); } };
+  const go = (n: number) => { setSlide(n); };
+  const next = () => { if (slide < TOTAL - 1) { setSlide(s => s + 1); } };
+  const prev = () => { if (slide > 0) { setSlide(s => s - 1); } };
 
   const onTouchStart = (e: React.TouchEvent) => { touchRef.current = e.touches[0].clientX; };
   const onTouchEnd = (e: React.TouchEvent) => {
@@ -1493,13 +1836,17 @@ export default function ApresentacaoTIME() {
   const CurrentSlide = SLIDES[slide];
 
   return (
-    <div ref={containerRef} className="relative w-screen h-screen overflow-hidden select-none"
+    <div ref={containerRef} className="fixed inset-0 overflow-hidden select-none"
       style={{ background: C.bg0, fontFamily: FONT }}
       onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}
     >
-      <AnimatePresence mode="sync" initial={false}>
-        <motion.div key={slide} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-          transition={{ duration: 0.35, ease: "easeInOut" }} className="absolute inset-0"
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div key={slide}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
+          style={{ position: "absolute", inset: 0, willChange: "opacity" }}
         >
           <CurrentSlide active={true} />
         </motion.div>
